@@ -4,6 +4,10 @@ import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 
 const {pageTitle} = Astro.props
+
+
+
+
 ---
 
 <!doctype html>
@@ -15,13 +19,13 @@ const {pageTitle} = Astro.props
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
-	<body>
+	<body data-theme="">
 		
 		
-			<NavBar client:load />
+			<NavBar client:load  />
 
 		
-		<div class="shadow-md rounded-2xl m-5 h-[100vh] w-[90%] mx-auto my-5">
+		<div id="root" class="shadow-md rounded-2xl m-5 h-fit w-[90%] mx-auto my-5">
 			
 			<slot />
 		</div>
@@ -31,7 +35,7 @@ const {pageTitle} = Astro.props
 
 <style scoped>
 	body {
-		background-image: url('/assets/backdrop.svg');
+		background-image: url(../assets/backdrop.svg);
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;

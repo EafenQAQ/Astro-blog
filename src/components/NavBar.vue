@@ -1,7 +1,7 @@
 <template>
-  <div class="navbar-container z-50" @mouseenter="showNavBar" @mouseleave="hideNavBar">
+  <div class="navbar-container z-50" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
     <div class="navbar w-[80vw] bg-base-100 rounded-2xl border-dashed border-2"
-      :class="{ 'translate-y-0': isVisible, '-translate-y-full': !isVisible }">
+      :class="{ 'navbar-visible': isVisible, 'navbar-hidden': !isVisible }">
       <div class="flex-1">
         <a href="/" class="btn btn-ghost text-xl">MOMO.blog</a>
       </div>
@@ -27,7 +27,7 @@
       </div>
       <!-- 主题切换按钮 -->
       <label class="swap swap-rotate">
-        <input type="checkbox" class="theme-controller" value="synthwave" />
+        <input @change="toggleTheme" type="checkbox" class="theme-controller" value="synthwave" />
         <svg class="swap-off h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
@@ -42,17 +42,43 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const isVisible = ref(false)
+// 控制导航栏显示状态
+const isVisible = ref(true);
 
-function showNavBar() {
-  isVisible.value = true
+// 标志变量，记录是否已经触发过鼠标移入事件
+const hasMouseEntered = ref(false);
+
+function handleMouseEnter() {
+  // 如果是第一次触发鼠标移入事件，设置标志变量为 true
+  if (!hasMouseEntered.value) {
+    hasMouseEntered.value = true;
+  }
+  isVisible.value = true; // 显示导航栏
 }
 
-function hideNavBar() {
-  isVisible.value = false
+function handleMouseLeave() {
+  // 如果已经触发过鼠标移入事件，则允许隐藏导航栏
+  if (hasMouseEntered.value) {
+    isVisible.value = false; // 隐藏导航栏
+  }
 }
+
+// 切换主题
+const toggleTheme = (e) => {
+  const newTheme = e.target.checked ? 'synthwave' : 'default';
+
+  let body = document.querySelector('body')
+  body.setAttribute('data-theme', newTheme);
+
+  // 根据主题切换背景图片
+  if (newTheme === 'synthwave') {
+    body.style.backgroundImage = "url('/assets/backdrop_dark.svg')";
+  } else {
+    body.style.backgroundImage = "url('/assets/backdrop.svg')";
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -61,27 +87,20 @@ function hideNavBar() {
   overflow: hidden;
   width: 100%;
   height: 100px;
-  /* 设置触发区域的高度 */
 }
 
 .navbar {
   position: absolute;
   top: 0;
   left: 50%;
-  /* 定位到容器的水平中心 */
-  transform: translate(-50%, -100%);
-  /* 初始状态隐藏在视口上方并居中 */
   transition: transform 0.5s ease-in-out;
-  /* 平滑动画 */
 }
 
-.navbar.translate-y-0 {
+.navbar-visible {
   transform: translate(-50%, 0);
-  /* 鼠标进入时平移到可见位置 */
 }
 
-.navbar.-translate-y-full {
+.navbar-hidden {
   transform: translate(-50%, -100%);
-  /* 鼠标移开时隐藏 */
 }
 </style>

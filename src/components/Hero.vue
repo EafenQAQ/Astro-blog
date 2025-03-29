@@ -17,7 +17,12 @@
 </template>
 
 <script setup>
+// 根据用户当前时间切换hero内容
 
+//切换hero背景图
+const morningURL = "../assets/hero_morning.jpg";
+const afternoonURL = "../assets/hero_afternoon.jpg";
+const eveningURL = "../assets/hero_evening.jpg";
 </script>
 
 <style lang="scss" scoped></style>
