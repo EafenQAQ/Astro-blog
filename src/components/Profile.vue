@@ -8,7 +8,7 @@
 
         <!-- Profile 文本 -->
         <div class="flex flex-col px-4 gap-4 items-center  w-full">
-            <h1 class="text-4xl font-semibold text-primary">MOMO</h1>
+            <h1 class="text-4xl font-semibold text-blue-800">MOMO</h1>
             <p class="text-gray-500">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
         </div>
 

@@ -37,6 +37,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import toggleTheme from '../utilities/ToggleTheme';
 
 // 控制导航栏显示状态
 const isVisible = ref(true);
@@ -59,20 +60,7 @@ function handleMouseLeave() {
   }
 }
 
-// 切换主题
-const toggleTheme = (e) => {
-  const newTheme = e.target.checked ? 'synthwave' : 'default';
 
-  let body = document.querySelector('body')
-  body.setAttribute('data-theme', newTheme);
-
-  // 根据主题切换背景图片
-  if (newTheme === 'synthwave') {
-    body.style.backgroundImage = "url('/assets/backdrop_dark.svg')";
-  } else {
-    body.style.backgroundImage = "url('/assets/backdrop.svg')";
-  }
-};
 </script>
 
 <style lang="scss" scoped>

@@ -2,3 +2,7 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+.backdrop-blur-sm {
+  z-index: 40;
+}
