@@ -1,5 +1,5 @@
 <template>
-    <nav class=" h-fit max-w-xl flex-1 bg-white/30 flex flex-col w-full items-center py-4">
+    <nav class=" h-fit max-w-xl flex-1 bg-white/0 flex flex-col w-full rounded-3xl items-center py-4">
         <!-- Profile Avatar -->
         <div class="mb-8">
             <img src="/assets/momo_head.jpg" alt="User Avatar"
@@ -7,7 +7,7 @@
         </div>
 
         <!-- Profile 文本 -->
-        <div class="flex flex-col gap-4 items-center  w-full">
+        <div class="flex flex-col px-4 gap-4 items-center  w-full">
             <h1 class="text-4xl font-semibold text-primary">MOMO</h1>
             <p class="text-gray-500">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
         </div>

@@ -18,15 +18,15 @@ if (import.meta.env.DEV) {
     </div>
     {allPosts.map((post: any) => (
       <li class="my-4 w-full ">
-        <a href={post.url} class="mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
+        <a href={post.url} class=" max-sm:flex-col max-sm:items-center max-sm:gap-0 mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
           <img
-            class="w-40 m-4 rounded-md"
+            class="w-40 m-4 rounded-md max-sm:w-[90%]"
             src={post.frontmatter.image?.url || '/default-image.jpg'}
             alt={post.frontmatter.title || 'Post Image'}
           />
           <div class="flex flex-col flex-1 gap-1 items-start justify-center">
-            <h2 class="text-2xl font-semibold">{post.frontmatter.title}</h2>
-            <p class="text-sm text-gray-500">
+            <h2 class="text-2xl font-semibold max-sm:pb-5">{post.frontmatter.title}</h2>
+            <p class=" max-sm:hidden text-sm text-gray-500">
               {post.frontmatter.description}
             </p>
           </div>
