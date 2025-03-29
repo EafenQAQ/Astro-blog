@@ -1,19 +1,21 @@
 <template>
-    <nav class=" h-fit max-w-[17rem] flex-1 bg-black flex flex-col items-center py-4">
+    <nav class=" h-fit max-w-xl flex-1 bg-white/30 flex flex-col w-full items-center py-4">
         <!-- Profile Avatar -->
         <div class="mb-8">
             <img src="/assets/momo_head.jpg" alt="User Avatar"
-                class="w-45 h-45 rounded-full object-cover border-2 border-blue-400" />
+                class="w-40 h-40 rounded-full object-cover border-2 border-blue-400" />
         </div>
 
-        <!-- Navigation Items -->
-        <div class="space-y-4 w-full">
-            <NavItem v-for="(item, index) in navItems" :key="index" :icon="item.icon" :label="item.label"
-                @click="selectNavItem(index)" :active="activeIndex === index" />
+        <!-- Profile 文本 -->
+        <div class="flex flex-col gap-4 items-center  w-full">
+            <h1 class="text-4xl font-semibold text-primary">MOMO</h1>
+            <p class="text-gray-500">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
         </div>
+
+
 
         <!-- Bottom Icons -->
-        <div class="my-4 flex space-y-4 gap-2 rounded-2xl px-4 pt-4 ">
+        <div class="my-4 flex space-y-4 gap-15 rounded-2xl px-4 pt-4 ">
             <BottomIcon icon="coffee" />
             <BottomIcon icon="github" />
             <BottomIcon icon="tv" />
@@ -65,7 +67,7 @@ const BottomIcon = defineComponent({
         }
 
         return () => h('div', {
-            class: 'flex justify-center cursor-pointer text-gray-400 hover:text-white transition-colors'
+            class: 'flex justify-center cursor-pointer text-gray-800 hover:text-gray-400 transition-colors'
         }, [
             h(iconMap[props.icon], {
                 class: 'w-6 h-6',
@@ -95,8 +97,4 @@ const selectNavItem = (index) => {
 }
 </script>
 
-<style scoped>
-nav {
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-</style>
+<style scoped></style>

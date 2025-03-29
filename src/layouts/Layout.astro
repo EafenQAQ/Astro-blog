@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css'
 import NavBar from '../components/NavBar.vue'
-import Footer from '../components/Footer.astro'
+import Footer from '../components/Footer.vue'
 
 const {pageTitle} = Astro.props
 ---
@@ -17,6 +17,7 @@ const {pageTitle} = Astro.props
 	</head>
 	<body>
 		
+		
 			<NavBar client:load />
 
 		
@@ -28,6 +29,13 @@ const {pageTitle} = Astro.props
 	</body>
 </html>
 
-<style>
+<style scoped>
+	body {
+		background-image: url('/assets/backdrop.svg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+	}
 	
-	</style>
+</style>
