@@ -91,7 +91,7 @@ tags: ["astro", "blogging", "learning in public"]
 
 首先，打开 Windows Docker Desktop 的以下选项：
 
-> ![Docker 配置](../pics/Pasted%20image%2020250327213917.png)
+> ![Docker 配置](../../../public/assets/illusts/post-1/1.png)
 
 启用后，Docker Server 会在 `127.0.0.1:2375` 暴露一个无 TLS 加密的端口。
 
@@ -142,7 +142,7 @@ docker run --name ubuntu_dev -itd ubuntu:22.04
 
 在 VSCode 远程开发插件中找到容器，进入后即可像本地 Linux 一样操作。
 
-> ![](../pics/Pasted%20image%2020250327214039.png)
+> ![](../../../public/assets/illusts/post-1/2.png)
 
 ---
 
