@@ -1,29 +1,23 @@
 <template>
-  <div class="navbar-container z-50" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+  <div class="navbar-container max-sm:hidden z-50" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+
     <div class="navbar w-[80vw] bg-base-100 rounded-2xl border-dashed border-2"
       :class="{ 'navbar-visible': isVisible, 'navbar-hidden': !isVisible }">
-      <div class="flex-1">
-        <a href="/" class="btn btn-ghost text-xl">MOMO.blog</a>
+      <!-- 汉堡 -->
+
+      <!-- logo -->
+      <div class="flex-1 navbar-start">
+        <a href="/" class=" max-sm:text-[14px] btn btn-ghost text-xl">Momo</a>
       </div>
-      <div class="flex gap-2">
-        <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-        <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src="/assets/momo_head.jpg" />
-            </div>
-          </div>
-          <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+
+
+      <!-- 导航路由 -->
+      <div class="flex-1 navbar-end max-sm:hidden">
+        <ul class="menu menu-horizontal">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/posts">Posts</a></li>
+        </ul>
       </div>
       <!-- 主题切换按钮 -->
       <label class="swap swap-rotate">
