@@ -2,6 +2,11 @@
 @plugin "daisyui" {
   themes: all;
 }
+@plugin "daisyui/theme" {
+  name: "synthwave";
+  --color-primary: #f2f2f2;
+  --color-base-content: #f2f2f2;
+}
 
 .backdrop-blur-sm {
   z-index: 40;

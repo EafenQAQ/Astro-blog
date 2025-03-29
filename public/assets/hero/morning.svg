@@ -1,0 +1,41 @@
+<svg
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    width="300"
+    height="100"
+    viewBox="0 0 300 100"
+>
+  <!-- 背景色 -->
+  <rect x="0" y="0" width="300" height="100" fill="#FDE6AB" />
+
+  <!-- 地平线下方区域 -->
+  <rect x="0" y="66" width="300" height="34" fill="#FDDC84" />
+
+  <!-- 太阳半圆 -->
+  <path
+    d="M125,66
+       A25,25 0 0,1 175,66
+       L125,66 Z"
+    fill="#FBCB44"
+  />
+
+  <!-- 太阳光芒（使用 7 根射线为例） -->
+  <g
+    fill="none"
+    stroke="#FBCB44"
+    stroke-width="4"
+    stroke-linecap="round"
+    transform="translate(150,66)"
+  >
+    <!-- 每条射线从半径 25 到半径 35，角度从 -60° 到 60° -->
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(-80)" />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(-60)" />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(-40)" />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(-20)" />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(0)"   />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(20)"  />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(40)"  />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(60)"  />
+    <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(80)" />
+  </g>
+</svg>

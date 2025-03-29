@@ -1,7 +1,7 @@
 <template>
     <nav class=" h-fit max-w-xl flex-1 bg-white/0 flex flex-col w-full rounded-3xl items-center py-4">
         <!-- Profile Avatar -->
-        <div class="mb-8">
+        <div @click="StartAnime" class="Momo mb-8 hover:scale-110 transition-all ease duration-100">
             <img src="/assets/momo_head.jpg" alt="User Avatar"
                 class="w-40 h-40 rounded-full object-cover border-2 border-blue-400" />
         </div>
@@ -9,7 +9,7 @@
         <!-- Profile 文本 -->
         <div class="flex flex-col px-4 gap-4 items-center  w-full">
             <h1 class="text-4xl font-semibold text-blue-800">MOMO</h1>
-            <p class="text-gray-500">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
+            <p class="text-base-content">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
         </div>
 
 
@@ -33,6 +33,10 @@ import {
     Tv,
     Rss
 } from 'lucide-vue-next'
+
+
+
+
 
 // Components
 const NavItem = defineComponent({
@@ -66,8 +70,9 @@ const BottomIcon = defineComponent({
             'rss': Rss
         }
 
+
         return () => h('div', {
-            class: 'flex justify-center cursor-pointer text-gray-800 hover:text-gray-400 transition-colors'
+            class: 'flex justify-center cursor-pointer text-base-content hover:text-gray-400 transition-colors'
         }, [
             h(iconMap[props.icon], {
                 class: 'w-6 h-6',

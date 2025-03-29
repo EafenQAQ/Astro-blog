@@ -29,7 +29,8 @@
   font-weight: bold;
   margin: 4em auto 2em;
   display: table;
-  padding: 0 0.2em;
+  padding: 0 0.4em;
+  border-radius: 5px;
 }
 
 .markdown-content h1 {

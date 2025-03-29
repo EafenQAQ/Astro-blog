@@ -12,7 +12,7 @@ const pageTitle = "Momo's Blog"
 <Layout pageTitle={pageTitle}>
 
 	<div id="narrowContainer" class="flex flex-col items-center justify-center w-full max-w-[50rem] mx-auto ">
-		<Profile />
+		<Profile client:only />
 		<div class="flex flex-col flex-1 justify-center items-center">
 			<Hero client:load />
 			<PostList />

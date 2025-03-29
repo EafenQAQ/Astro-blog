@@ -1,10 +1,11 @@
 <template>
-    <div id="hero" class="flex-1 my-10 flex justify-between max-sm:flex-col-reverse max-sm:gap-4 items-center w-[90%]  rounded-2xl">
+    <div id="hero"
+        class="flex-1 my-10 flex justify-between max-sm:flex-col-reverse max-sm:gap-4 items-center w-[90%]  rounded-2xl">
         <!-- 问候语 -->
         <div class="hero rounded-2xl flex-1" :style="{ backgroundImage: `url(${currentBackground})` }">
-            <div class="hero-overlay rounded-2xl bg-white/30 backdrop-blur-[2px]" :class="overlayClass"></div>
+            <div class="hero-overlay rounded-2xl backdrop-blur-[1px]" :class="overlayClass"></div>
             <div class="hero-content text-center" :class="textColorClass">
-                <div class="max-w-md text-black/80">
+                <div class="max-w-md text-white">
                     <h1 class="mb-5 text-3xl font-bold">{{ greeting }}</h1>
                     <p class="mb-5">
                         {{ timeSpecificMessage }}
@@ -45,7 +46,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 const morningURL = "/assets/hero/morning.jpg";
 const afternoonURL = "/assets/hero/noon.jpg";
 const eveningURL = "/assets/hero/evening.jpg";
-const nightURL = "/assets/hero/night.jpg";
+const nightURL = "/assets/hero/night.svg";
 
 // 响应式变量
 const hours = ref(0);
