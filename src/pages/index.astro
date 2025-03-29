@@ -1,0 +1,22 @@
+---
+import Hero from '../components/Hero.vue';
+import PostList from '../components/PostList.astro';
+import Profile from '../components/Profile.vue';
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Momo's Blog"
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout pageTitle={pageTitle}>
+
+	<div class="flex">
+		<Profile />
+		<div class="flex flex-col flex-1 justify-center items-center">
+			<Hero />
+			<PostList />
+		</div>
+	</div>
+	
+</Layout>

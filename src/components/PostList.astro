@@ -1,0 +1,32 @@
+---
+
+
+const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
+if (import.meta.env.DEV) {
+  console.log(allPosts);
+}
+---
+
+<ul class="max-w-[90rem] w-full p-4 overflow-y-auto">
+  {allPosts.map((post: any) => (
+    <li class="my-4 w-full ">
+      <a href={post.url} class="mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-200 transition duration-150 flex">
+        <img 
+          class="w-40 m-4 rounded-md" 
+          src={post.frontmatter.image?.url || '/default-image.jpg'} 
+          alt={post.frontmatter.title || 'Post Image'} 
+        />
+        <div class="flex flex-col flex-1 gap-1 items-start justify-center">
+          <h2 class="text-2xl font-semibold">{post.frontmatter.title}</h2>
+          <p class="text-sm text-gray-500">
+            {post.frontmatter.description}
+          </p>
+        </div>
+      </a>
+      
+    </li>
+  ))}
+</ul>
+
+
+

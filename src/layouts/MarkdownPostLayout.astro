@@ -1,0 +1,28 @@
+---
+import '../styles/md.css'
+import '../styles/global.css'
+import NavBar from '../components/NavBar.vue'
+import Footer from '../components/Footer.astro'
+---
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Document</title>
+    </head>
+    <body>
+     <NavBar client:load />
+     <div
+     class="markdown-content p-10 rounded-xl shadow-2xl h-screen w-[80rem] mx-auto overflow-y-auto"
+    >
+  
+        <slot />
+
+  
+     </div>
+     <Footer />
+    </body>
+</html>
+

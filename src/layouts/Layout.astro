@@ -1,0 +1,33 @@
+---
+import '../styles/global.css'
+import NavBar from '../components/NavBar.vue'
+import Footer from '../components/Footer.astro'
+
+const {pageTitle} = Astro.props
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		
+			<NavBar client:load />
+
+		
+		<div class="shadow-md rounded-2xl m-5 h-[100vh] w-[90%] mx-auto my-5">
+			
+			<slot />
+		</div>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	
+	</style>
