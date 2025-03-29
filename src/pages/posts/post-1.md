@@ -8,6 +8,7 @@ image:
   url: "/assets/postThumbs/example_2.jpg"
   alt: "img1"
 tags: ["astro", "blogging", "learning in public"]
+
 ---
 
 # 容器化开发环境搭建

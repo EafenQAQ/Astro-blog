@@ -3,6 +3,11 @@ import '../styles/md.css'
 import '../styles/global.css'
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
+import PassageNavi from '../components/PassageNavi.vue'
+import SideProfile from '../components/SideProfile.vue'
+import SideDrawer from '../components/SideDrawer.vue'
+
+
 ---
 
 <html lang="zh-CN">
@@ -12,16 +17,25 @@ import Footer from '../components/Footer.vue'
         <meta name="generator" content={Astro.generator} />
         <title>Document</title>
     </head>
-    <body class=" bg-white/30 backdrop-blur-2xl">
+    <body>
+    <SideDrawer client:load />
      <NavBar client:load />
-     <div
-     class="markdown-content bg-white/80 backdrop-blur-sm p-10 rounded-xl shadow-2xl h-screen w-full max-w-[50rem] mx-auto overflow-y-auto"
-    >
-  
-        <slot />
 
-  
+     <div class="flex justify-between">
+        <div class="flex-1  max-2xl:hidden">
+            <SideProfile client:load/>
+        </div>
+         <div
+         id="passageContent"
+         class="markdown-content my-5 mx-auto flex-2 bg-white/80 p-10 rounded-xl shadow-2xl h-screen w-full max-w-[50rem] overflow-y-auto"
+             >
+            <slot />
+         </div>
+
+             <PassageNavi client:load />
+          
      </div>
+
      <Footer />
     </body>
 </html>
@@ -34,4 +48,9 @@ import Footer from '../components/Footer.vue'
 		background-attachment: fixed;
 		background-position: center;
 	}
+   /* 毛玻璃效果 */
+   #passageContent {
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.5);
+   }
 </style>
