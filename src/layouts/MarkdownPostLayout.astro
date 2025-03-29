@@ -12,10 +12,10 @@ import Footer from '../components/Footer.vue'
         <meta name="generator" content={Astro.generator} />
         <title>Document</title>
     </head>
-    <body>
+    <body class=" bg-white/30 backdrop-blur-2xl">
      <NavBar client:load />
      <div
-     class="markdown-content p-10 rounded-xl shadow-2xl h-screen w-full max-w-[50rem] mx-auto overflow-y-auto"
+     class="markdown-content bg-white/80 backdrop-blur-sm p-10 rounded-xl shadow-2xl h-screen w-full max-w-[50rem] mx-auto overflow-y-auto"
     >
   
         <slot />
@@ -26,3 +26,12 @@ import Footer from '../components/Footer.vue'
     </body>
 </html>
 
+<style scoped>
+	body {
+		background-image: url(../assets/backdrop.svg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+	}
+</style>
