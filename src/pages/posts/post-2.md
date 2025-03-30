@@ -62,14 +62,14 @@ apt-get update && apt-get install -y --no-install-recommends \
 ```
 
 简单解释：
-	- build-essential  gcc g++工具包
-	- gdb  调试器  vscode远程调试需要这个
-	- git 版本管理工具
-	- curl / wget 下载工具
-	- vim 文本编辑器
-	- ninja-build 并行化编译工具，和make是一个层级的，能大幅加速编译
-	- libssl-dev  ssl库 后面会用到
-	- ca-certificates 应该是一些证书的秘钥 下在源码的时候需要做验证
+   - build-essential  gcc g++工具包
+   - gdb  调试器  vscode远程调试需要这个
+   - git 版本管理工具
+   - curl / wget 下载工具
+   - vim 文本编辑器
+   - ninja-build 并行化编译工具，和make是一个层级的，能大幅加速编译
+   - libssl-dev  ssl库 后面会用到
+   - ca-certificates 应该是一些证书的秘钥 下在源码的时候需要做验证
 
 另外，推荐使用clangd做vscode的代码补全插件， 这个插件会弹窗提示你下载clang,
 clangd是和gcc一个层级的编译器，编译快，效率高，但是不要使用这个东西来编译整个项目的第三方库和项目，因为linux上大部分库都是基于gcc编译的，在没有搞清楚依赖的情况下使用clang可能会遇到严重的编译链接错误（别问我怎么知道的....)
@@ -227,7 +227,7 @@ mysql-connector的动态库文件基本在/usr/lib64下，为了能正确链接�
 	
 2. 起一个ubuntu容器专门做qt编辑编译
 	 正常起一个ubuntu:22.04,网上也有带桌面环境的容器，可以在容器中完成所有开发操作，个人认为没必要用带桌面的，起容器的同时使用docker 的卷挂载把windows 上创建的qt 项目的目录挂载到容器里
-```bask
+```bash
 docker windows上的qt项目路径：容器里的路径
 ```
 这样就做到代码实时反馈和更新了
@@ -273,8 +273,8 @@ target_link_libraries(chatPro PRIVATE Qt5::Widgets Qt5::Network)
 
 ```
 
-	简单说明，这里基本就是用cmake去配置整个项目，把.h .cpp .ui文件都添加到项目里，然后使用file命令把项目的一些素材和配置文件拷贝到build文件夹下面。
-	 注意，qt开发时，涉及到ui操作，先用creator build一下，把新的ui文件生成，linux里才能识别到新的ui文件或者文件的变更
+>简单说明，这里基本就是用cmake去配置整个项目，把.h .cpp .ui文件都添加到项目里，然后使用file命令把项目的一些素材和配置文件拷贝到build文件夹下面。
+注意，qt开发时，涉及到ui操作，先用creator build一下，把新的ui文件生成，linux里才能识别到新的ui文件或者文件的变更
 
 
 # 更大的折腾方向
