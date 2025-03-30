@@ -1,47 +1,114 @@
 ---
+import IntroCard from '../components/IntroCard.vue';
 import Layout from '../layouts/Layout.astro';
-import MarkdownPostLayout from '../layouts/MarkdownPostLayout.astro';
+
 ---
 
-<MarkdownPostLayout pageTitle="关于">
-    <div>
-        <h1>C++ 全栈聊天项目二次开发</h1>
+    <Layout>
+        <div id="aboutPage" class="h-fit max-w-[80rem] rounded-2xl mx-auto bg-white/60 backdrop-blur-sm flex flex-col-reverse gap-10 justify-center">
 
-    <h2>项目简介</h2>
+            <div>
+                <h1>C++ 全栈聊天项目二次开发</h1>
+                <h2>项目简介</h2>
+                <p>本项目是对 B 站 UP 主“恋恋风辰 zack”的 C++ 全栈聊天项目的二次开发，主要完成以下周边工作，解决了代码编写以外的问题：</p>
+                <ul>
+                    <li><strong>服务器 Linux 移植</strong></li>
+                    <li><strong>服务器 Dockerfile 封装</strong></li>
+                    <li><strong>自动化 CICD 管线搭建</strong></li>
+                    <li><strong>性能测试脚本和测试自动化</strong></li>
+                </ul>
+                <p>此外，还分享了个人远程容器化开发环境。</p>
+                <h2>技术栈</h2>
+                <p>本项目涉及以下技术：</p>
+                <ul>
+                    <li><strong>CMake 编译第三方库</strong></li>
+                    <li><strong>大型项目 CMakeLists.txt 编写</strong></li>
+                    <li><strong>开发环境容器化</strong></li>
+                    <li><strong>Docker 网络、卷、容器编排</strong></li>
+                </ul>
+                <h2>学习建议</h2>
+                <p>本项目涵盖了 C++ 开发中常用的技术，通过完成本项目，你将能够掌握以上技能。</p>
+                <h2>致谢</h2>
+                <p>感谢 UP 主“恋恋风辰 zack”的无私分享：</p>
+                <ul>
+                    <li><strong>B 站：</strong> <a href="https://space.bilibili.com/271469206">https://space.bilibili.com/271469206</a></li>
+                    <li><strong>博客：</strong> <a href="https://llfc.club/home">https://llfc.club/home</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <IntroCard client:load />
 
-    <p>本项目是对 B 站 UP 主“恋恋风辰 zack”的 C++ 全栈聊天项目的二次开发，主要完成以下周边工作，解决了代码编写以外的问题：</p>
+    </Layout>
 
-    <ul>
-        <li><strong>服务器 Linux 移植</strong></li>
-        <li><strong>服务器 Dockerfile 封装</strong></li>
-        <li><strong>自动化 CICD 管线搭建</strong></li>
-        <li><strong>性能测试脚本和测试自动化</strong></li>
-    </ul>
+<script>
+    
+    
+</script>
+    <style scoped>
 
-    <p>此外，还分享了个人远程容器化开发环境。</p>
 
-    <h2>技术栈</h2>
+/* 页面整体样式 */
+#aboutPage {
+  padding: 2rem;
+  color: #333; /* 深灰文字 */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
+}
 
-    <p>本项目涉及以下技术：</p>
+/* 标题样式 */
+#aboutPage h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1a202c; /* 深蓝色 */
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3182ce; /* 蓝色下划线 */
+  padding-bottom: 0.5rem;
+}
 
-    <ul>
-        <li><strong>CMake 编译第三方库</strong></li>
-        <li><strong>大型项目 CMakeLists.txt 编写</strong></li>
-        <li><strong>开发环境容器化</strong></li>
-        <li><strong>Docker 网络、卷、容器编排</strong></li>
-    </ul>
+#aboutPage h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2d3748; /* 深灰色 */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 
-    <h2>学习建议</h2>
+/* 段落样式 */
+#aboutPage p {
+  font-size: 1rem;
+  color: #4a5568; /* 中灰色 */
+  margin-bottom: 1rem;
+}
 
-    <p>本项目涵盖了 C++ 开发中常用的技术，通过完成本项目，你将能够掌握以上技能。</p>
+/* 列表样式 */
+#aboutPage ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
 
-    <h2>致谢</h2>
+#aboutPage ul li {
+  font-size: 1rem;
+  color: #4a5568; /* 中灰色 */
+  margin-bottom: 0.5rem;
+}
 
-    <p>感谢 UP 主“恋恋风辰 zack”的无私分享：</p>
+/* 链接样式 */
+#aboutPage a {
+  color: #3182ce; /* 蓝色 */
+  text-decoration: none;
+}
 
-    <ul>
-        <li><strong>B 站：</strong> <a href="https://space.bilibili.com/271469206">https://space.bilibili.com/271469206</a></li>
-        <li><strong>博客：</strong> <a href="https://llfc.club/home">https://llfc.club/home</a></li>
-    </ul>
-    </div>
-</MarkdownPostLayout>
+#aboutPage a:hover {
+  text-decoration: underline;
+}
+
+/* IntroCard 的样式调整 */
+#aboutPage .content {
+  background: #ffffff; /* 白色背景 */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+    </style>

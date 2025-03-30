@@ -5,6 +5,8 @@ const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: 
 if (import.meta.env.DEV) {
   console.log(allPosts);
 }
+
+const displayPosts = allPosts.slice(0, 4);
 ---
 
 <div id="postList" class="my-10 max-w-[90rem] w-full overflow-y-auto">
@@ -16,7 +18,7 @@ if (import.meta.env.DEV) {
       </span>
       最近发布
     </div>
-    {allPosts.map((post: any) => (
+    {displayPosts.map((post: any) => (
       <li class="my-4 w-full ">
         <a href={post.url} class=" max-sm:flex-col max-sm:items-center max-sm:gap-0 mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
           <img
@@ -35,6 +37,14 @@ if (import.meta.env.DEV) {
       </li>
     ))}
   </ul>
+  <div class="flex flex-1 justify-end">
+    <button class="flex items-center gap-1 px-4 py-2 hover:cursor-pointer self-end bg-white/0 border-none hover:backdrop-blur-sm rounded-3xl hover:bg-gray-300/30">Read More
+    <span>
+      <svg t="1743312005051" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3440" width="16" height="16"><path d="M514 912c-219.9 0-398.8-178.9-398.8-398.9 0-219.9 178.9-398.8 398.8-398.8s398.8 178.9 398.8 398.8c0 220-178.9 398.9-398.8 398.9z m0-701.5c-166.9 0-302.7 135.8-302.7 302.7S347.1 815.9 514 815.9s302.7-135.8 302.7-302.7S680.9 210.5 514 210.5z" fill="#13227a" p-id="3441"></path><path d="M402.5 677.3c0-15 5.7-30.1 17.2-41.5l122.6-122.6-122.6-122.6c-22.9-22.9-22.9-60.2 0-83.1 22.9-22.9 60.2-22.9 83.1 0l164.1 164.1c22.9 22.9 22.9 60.2 0 83.1L502.8 718.8c-22.9 22.9-60.2 22.9-83.1 0-11.5-11.4-17.2-26.5-17.2-41.5z" fill="#13227a" p-id="3442"></path></svg>
+    </span>
+    </button>
+
+  </div>
 </div>
 
 
