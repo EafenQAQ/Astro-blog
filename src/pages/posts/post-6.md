@@ -4,7 +4,7 @@ title: "单元测试和性能测试集成"
 author: "Mono"
 description: "这是一个一个测试思路啊啊啊"
 image:
-  url: "https://docs.astro.build/default-og-image.png"
+  url: "/assets/postThumbs/unitest.png"
   alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
@@ -16,7 +16,7 @@ tags: ["astro", "successes"]
 https://github.com/github-newstar/pytest
 
 ## 思路
-   用py的request编写业务测试的流程，主要是拿验证码，注册，用户登录，起多个线程做数据库的压力测试。对于验证码接口，用wrk做极限性能测试。验证码直接从redis里面拿。
+   用py的request编写业务测试的流程，主要是拿验证码，注册，用户登录，起多个线程做数据库的压力测试。这个对应的代码是`net_test.py`对于验证码接口，用wrk做极限性能测试,lua脚本对应`verify_code_test.lua`验证码直接从redis里面拿。
    代码实现不做详细讲解，我自己也不是很熟，其实有思路以后，让ai给你写就行了。
    做压力测试的时候，数据库的性能表现非常差，主要优化思路是：
    - 降低隔离等级为读提交
