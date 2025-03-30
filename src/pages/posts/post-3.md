@@ -12,7 +12,7 @@ tags: ["astro", "successes"]
 
 # CMAKE 介绍
 
-    cmake是一个跨平台的构建工具，它不负责具体的编译，它根据CMakeLists.txt在不同的平台下生成不同的构建文件，在linux下一般是makefile,使用CMakeLists.txt来指导项目的构建能很轻松地做到跨平台支持
+cmake是一个跨平台的构建工具，它不负责具体的编译，它根据CMakeLists.txt在不同的平台下生成不同的构建文件，在linux下一般是makefile,使用CMakeLists.txt来指导项目的构建能很轻松地做到跨平台支持
 
 # 一个简单的 CMakeLists.txt
 
@@ -28,11 +28,11 @@ project(MyProject)
 add_executable(my_executable main.cpp)
 ```
 
-    主要需要设置cmake最低版本要求，设置项目名字，添加可执行文件和链接库
+主要需要设置cmake最低版本要求，设置项目名字，添加可执行文件和链接库
 
-    怎么样，CMAKE很简单吧？
+怎么样，CMAKE很简单吧？
 
-    现在让我们看到我们项目的CMakeLists.txt
+现在让我们看到我们项目的CMakeLists.txt
 
 # 项目的 CMakeLists.txt
 
@@ -144,12 +144,12 @@ COMMAND ${CMAKE_COMMAND} -E copy_if_different
 "${Targetconfig}" "${OutPutDir}/config.ii")
 ```
 
-    怎么样，是不是看起来难多了？
-    放心，我在做这个项目前也就会一点点cmake，只要去参考up主写的cmake和问ai（这是最主要的），你也能写出这样的一个东西。
+怎么样，是不是看起来难多了？
+放心，我在做这个项目前也就会一点点cmake，只要去参考up主写的cmake和问ai（这是最主要的），你也能写出这样的一个东西。
 
 ## 那我问你，每一块是干啥的
 
-    最开始介绍的demo可能过于简单，下面是一个涉及到一个第三方库的cmakelists.txt的demo
+最开始介绍的demo可能过于简单，下面是一个涉及到一个第三方库的cmakelists.txt的demo
 
 ```cmake
 cmake_minimum_required(VERSION 3.10)
@@ -169,8 +169,8 @@ target_link_libraries(jsoncpp_example PRIVATE JsonCpp::JsonCpp)
 
 ```
 
-    对比最简单的版本，基本上就是多了find_package去找到第三方库的位置，然后把第三方库和我们的文件链接到一起。
-    现在进行讲解
+对比最简单的版本，基本上就是多了find_package去找到第三方库的位置，然后把第三方库和我们的文件链接到一起。
+现在进行讲解
 
 ```cmake
 #指定cmake的最小版本
@@ -279,7 +279,7 @@ COMMAND ${CMAKE_COMMAND} -E copy_if_different
 "${Targetconfig}" "${OutPutDir}/config.ii")
 ```
 
-    其他几个服务器基本上在这个的基础上改改项目名，可执行文件名就可以了
+其他几个服务器基本上在这个的基础上改改项目名，可执行文件名就可以了
 
 ## 构建
 
@@ -294,11 +294,11 @@ ninja
 ./gateserver
 ```
 
-    这里的操作基本和编译第三方库一样
+这里的操作基本和编译第三方库一样
 
 ### 自动
 
-    使用VSCode的CMakeTools插件，可以通过ctrl+shift+p搜索cmake相关的操作去构建，也可以在这里指定编译的类型(release or debug or ....)，可以在VSCode的setting里指定ninja做生成器
+使用VSCode的CMakeTools插件，可以通过ctrl+shift+p搜索cmake相关的操作去构建，也可以在这里指定编译的类型(release or debug or ....)，可以在VSCode的setting里指定ninja做生成器
 
 ```json
 "cmake.generator": "Ninja"

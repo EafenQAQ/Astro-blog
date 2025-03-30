@@ -11,11 +11,11 @@ tags: ["astro", "successes"]
 ---
 
 # 介绍
-	本文将把服务器的所有基础环境封装成docker image,并使用多阶段构建的技术，抛弃生产镜像所不需要的依赖，大幅减少最终部署在云服务器上的镜像大小。CICD脚本见下一节
-	整体效果为：
-	代码push到github->触发cicd工作流->自动白嫖github的虚拟机完成源码编译和生产镜像的构建和推送->自动化部署到云服务器上
-	涉及到的知识包括：dockerfile, docker-compose, github actions
-	强烈建议学习完整个项目的Linux环境配置后再看
+本文将把服务器的所有基础环境封装成docker image,并使用多阶段构建的技术，抛弃生产镜像所不需要的依赖，大幅减少最终部署在云服务器上的镜像大小。CICD脚本见下一节
+整体效果为：
+代码push到github->触发cicd工作流->自动白嫖github的虚拟机完成源码编译和生产镜像的构建和推送->自动化部署到云服务器上
+涉及到的知识包括：dockerfile, docker-compose, github actions
+强烈建议学习完整个项目的Linux环境配置后再看
 
 # 环境准备
 1. 使用git管理代码，并且绑定到github上的仓库
@@ -124,24 +124,24 @@ RUN echo "/usr/lib64" >> /etc/ld.so.conf.d/mysql-connector-cpp.conf && \
 
 ```
 
-	不难发现，这不就是把之前配置环境的命令写到dockerfile里面了吗？
+不难发现，这不就是把之前配置环境的命令写到dockerfile里面了吗？
 	没错，就这么简单~
 	怎么样，linux很神奇吧~~~
 
-	这个文件编译出来的dockerfile体积是比较大的，原因是docker的缓存机制
+这个文件编译出来的dockerfile体积是比较大的，原因是docker的缓存机制
 	docker会按命令，自上而下的缓存每次命令执行的结果。
 	
-	在我们手动编写dockerfile的时候，利用这个缓存机制，把不怎么变动的部分写到前面，然后再不停地写一点，生成一个镜像实例化来debug,具体表现就是把第三方库的下载和编译拆开（说的就是你的grpc!)
+在我们手动编写dockerfile的时候，利用这个缓存机制，把不怎么变动的部分写到前面，然后再不停地写一点，生成一个镜像实例化来debug,具体表现就是把第三方库的下载和编译拆开（说的就是你的grpc!)
 
-	但是，当我们在后面的命令中把前面下面的文件做清除，则只是标记为不可见，后面的命令没办法影响前面的缓存，所以写完整个dockerfile之后，我们需要把能合并的命令镜像合并，在一条命令里下载代码，构建，清理现场
+但是，当我们在后面的命令中把前面下面的文件做清除，则只是标记为不可见，后面的命令没办法影响前面的缓存，所以写完整个dockerfile之后，我们需要把能合并的命令镜像合并，在一条命令里下载代码，构建，清理现场
 
-	呃，这里好像只有boost库和grpc没合并，盲猜是我忘记了，这个任务交给你罢（赞赏）
+呃，这里好像只有boost库和grpc没合并，盲猜是我忘记了，这个任务交给你罢（赞赏）
 
-	编写好以后用`docker build  -t  image-name  .`来构建镜像
+编写好以后用`docker build  -t  image-name  .`来构建镜像
 	测试完毕后用`docker tag`给本地的镜像打个标签，然后发布到dockerhub上，我的是
 	`jojo114514/base-image`,这样每次github都可以直接拉这个镜像来编译了。
 
-	你也不想每次触发CICD都花30分钟在构建环境上吧~
+你也不想每次触发CICD都花30分钟在构建环境上吧~
 	
 ## 多阶段构建的定制
 
@@ -163,7 +163,7 @@ cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release && \
 ninja
 ```
 
-	非常的简单啊，我们认为这个dockerfile在源码的同级目录下，它拉取了我们的基础构建环境，在这个环境的基础上，把源码复制到容器里，并且编译成二进制文件。
+非常的简单啊，我们认为这个dockerfile在源码的同级目录下，它拉取了我们的基础构建环境，在这个环境的基础上，把源码复制到容器里，并且编译成二进制文件。
 
 ### final阶段
 
@@ -208,7 +208,7 @@ WORKDIR /root/gateserver
 CMD ["/root/gateserver/gateserver"]
 ```
 
-	非常的简单啊，主要工作就是起了一个新的ubuntu:22.04，下载一些必要的依赖，然后从build阶段的镜像里面把动态库和服务器的二进制文件拷贝过来，最后指定了容器启动的默认行为，也是运行gateserver。最终的这个final镜像体积只有100多M
+非常的简单啊，主要工作就是起了一个新的ubuntu:22.04，下载一些必要的依赖，然后从build阶段的镜像里面把动态库和服务器的二进制文件拷贝过来，最后指定了容器启动的默认行为，也是运行gateserver。最终的这个final镜像体积只有100多M
 
 ### 完整的dockerfile
 
@@ -268,10 +268,10 @@ ldconfig
 WORKDIR /root/gateserver
 CMD ["/root/gateserver/gateserver"]
 ```
-	通过这个dockerfile可以很轻松的用docker build构建出我们需要的镜像
+通过这个dockerfile可以很轻松的用docker build构建出我们需要的镜像
 
 ## varifyserver
-	这个使用node.js编写，用npm运行，所以简单地多，注意，最好不要把config.json文件封装到dockerfile里，这里面有你的邮箱秘钥
+这个使用node.js编写，用npm运行，所以简单地多，注意，最好不要把config.json文件封装到dockerfile里，这里面有你的邮箱秘钥
 	
 ```dockerfile
 FROM node:18-alpine
@@ -285,5 +285,5 @@ CMD [ "npm","run", "server"]
 
 ```
 
-	很快啊，就起了一个varifyserver
+很快啊，就起了一个varifyserver
 
