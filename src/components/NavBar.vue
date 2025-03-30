@@ -1,7 +1,7 @@
 <template>
   <div class="navbar-container max-sm:hidden z-50" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
 
-    <div class="navbar w-[80vw] bg-base-100 rounded-2xl border-dashed border-2"
+    <div class="navbar w-[80vw] bg-base-100 rounded-2xl border-dashed border-black border-2"
       :class="{ 'navbar-visible': isVisible, 'navbar-hidden': !isVisible }">
       <!-- 汉堡 -->
 
