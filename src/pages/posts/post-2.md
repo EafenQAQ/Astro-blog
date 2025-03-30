@@ -71,7 +71,7 @@ apt-get update && apt-get install -y --no-install-recommends \
    - libssl-dev  ssl库 后面会用到
    - ca-certificates 应该是一些证书的秘钥 下在源码的时候需要做验证
 
-另外，推荐使用clangd做vscode的代码补全插件， 这个插件会弹窗提示你下载clang,
+>另外，推荐使用clangd做vscode的代码补全插件， 这个插件会弹窗提示你下载clang,
 clangd是和gcc一个层级的编译器，编译快，效率高，但是不要使用这个东西来编译整个项目的第三方库和项目，因为linux上大部分库都是基于gcc编译的，在没有搞清楚依赖的情况下使用clang可能会遇到严重的编译链接错误（别问我怎么知道的....)
 
 下载不下来请考虑换源和魔法
