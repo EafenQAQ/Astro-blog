@@ -17,8 +17,13 @@
         <!-- Bottom Icons -->
         <div class="my-4 flex space-y-4 gap-15 rounded-2xl px-4 pt-4 ">
             <BottomIcon icon="coffee" />
-            <BottomIcon icon="github" />
-            <BottomIcon icon="tv" />
+            <a href="https://github.com/github-newstar" target="_blank">
+                <BottomIcon icon="github" />
+            </a>
+            <a href=" https://space.bilibili.com/31331836" target="_blank">
+
+                <BottomIcon icon="tv" />
+            </a>
             <BottomIcon icon="rss" />
         </div>
     </nav>
