@@ -170,6 +170,9 @@
   },
   "active": "3d8004ead91cc40d",
   "lastOpenFiles": [
+    "src/components/Social.vue",
+    "public/assets/postThumbs/CI-CDgithub.png",
+    "public/assets/postThumbs/CI-CDdockerfile.png",
     "src/components/showPassageNavi.vue",
     "src/components/ScrolltoTop.vue",
     "public/assets/postThumbs/cmake-build.png",

@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "项目的cmake构建"
 author: "Mono"
-description: "这篇文章会自己出现在列表中！"
+description: "这是一个一个一个cmake的构建"
 image:
   url: "/assets/postThumbs/cmake-build.png"
   alt: "The word astro against an illustration of planets and stars."

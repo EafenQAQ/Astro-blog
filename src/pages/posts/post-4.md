@@ -4,7 +4,7 @@ title: "CICD集成-dockerfile封装"
 author: "Mono"
 description: "这是一个一个CICD啊啊啊"
 image:
-  url: "https://docs.astro.build/default-og-image.png"
+  url: "/assets/postThumbs/CI-CDdockerfile.png"
   alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
