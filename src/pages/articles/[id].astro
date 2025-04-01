@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import axios from 'axios';
+import { marked } from 'marked'; 
+
+export async function getStaticPaths() {
+  try {
+    const response = await axios.get('http://localhost:4399/api/notion-articles');
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const articles = response.data;
+
+    return articles.map((article:any) => ({
+      params: { id: article.id },
+      props: { article },
+    }));
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
+}
+
+const { article } = Astro.props;
+
+// if (!article) {
+//   return (
+//     <Layout title="文章未找到">
+//       <p>抱歉，该文章不存在。</p>
+//     </Layout>
+//   );
+// }
+
+const title = article.properties?.['文章标题']?.title?.[0]?.plain_text || '无标题';
+const contentRichText = article.properties?.['文章内容']?.rich_text || [];
+const contentPlainText = contentRichText.map(item => item.plain_text).join('');
+
+// 如果你的文章内容是 Markdown 格式，可以使用 marked 渲染
+const renderedContent = marked.parse(contentPlainText);
+---
+
+<Layout>
+  <article>
+    <h1>{title}</h1>
+    <div class="my-5 text-gray-600 text-sm" >创建时间: {new Date(article.created_time).toLocaleDateString()}</div>
+    
+    <div class="text-base-content" set:html={renderedContent}></div>
+
+    <p><a href={article.properties?.['文章链接']?.url} target="_blank" rel="noopener noreferrer">阅读原文</a></p>
+  </article>
+</Layout>
+
+<style scoped>
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+
+p {
+  margin-bottom: 1.5em; /* 设置段落之间的间距 */
+  line-height: 1.8; /* 调整行高以提高可读性 */
+}
+
+h1, h2 {
+text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4em auto 2em;
+  display: table;
+  padding: 0 0.4em;
+  border-radius: 5px;
+}
+
+h3 {
+    font-size: 15.4px;
+  line-height: 1.2;
+  font-weight: bold;
+  padding-left: 8px;
+  border-left: 3px solid #0f4c81;
+  margin: 2em 8px 0.75em 0;
+}
+
+
+
+</style>

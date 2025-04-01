@@ -189,6 +189,13 @@ const scrollToHeading = (id) => {
 // 显示或隐藏目录
 
 const showPassageNavi = ref(false)
+
+// 在大屏幕上默认显示
+onMounted(() => {
+    if (window.innerWidth >= 1024) {
+        showPassageNavi.value = true
+    }
+})
 const togglePassageNavi = () => {
     showPassageNavi.value = !showPassageNavi.value
     

@@ -1,0 +1,87 @@
+<template>
+    <div id="RSSPassageListPre" class="my-10 max-w-[90rem] w-full overflow-y-auto">
+
+        <ul>
+            <div class="flex gap-2 text-3xl font-bold my-5 ml-5">
+                <span>
+                    <svg t="1743222624926" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2709" width="32" height="32">
+                        <path
+                            d="M858.528537 988.072043C858.528537 990.471701 858.238844 992.802927 857.706981 995.039871 856.758447 1010.772228 843.705175 1023.239652 827.734449 1023.239652L195.505204 1023.239652C178.918215 1023.239652 165.471463 1009.7929 165.471463 993.205912 165.471463 992.340256 165.516324 991.485625 165.588177 990.638977 165.516324 989.79195 165.471463 988.937319 165.471463 988.072043L165.471463 155.491137 165.471463 155.491137 165.471463 125.457397C165.471463 108.870028 178.917835 95.423656 195.505204 95.423656L384.831821 95.423656 384.831821 155.491137 225.538944 155.491137 225.538944 963.172171 798.461056 963.172171 798.461056 155.110963 639.168179 155.110963 639.168179 95.043482 828.494796 95.043482C845.081785 95.043482 858.528537 108.489854 858.528537 125.077223L858.528537 125.455116C858.528537 125.455876 858.528537 125.456636 858.528537 125.457397L858.528537 988.072043ZM648.944352 549.349427 694.292259 596.282659 452.068241 822.696003 330.084113 696.442903 377.585705 651.639785 454.221546 730.959654 648.944352 549.349427ZM698.095139 190.086965C716.992064 190.086965 732.310792 205.405693 732.310792 224.302618L732.310792 282.849404 289.02799 282.849404 289.02799 224.302618C289.02799 205.405693 304.346719 190.086965 323.243644 190.086965L416.714727 190.086965C416.505251 189.550159 416.386257 188.968113 416.386257 188.357173L416.386257 96.184004C416.386257 43.483154 459.108682 0.760348 511.809913 0.760348 564.510764 0.760348 607.233569 43.483154 607.233569 96.184004L607.233569 188.357173C607.233569 188.968113 607.114575 189.550159 606.905099 190.086965L698.095139 190.086965ZM511.809913 93.522787C493.123224 93.522787 477.974433 108.671577 477.974433 127.358266 477.974433 146.044956 493.123224 161.193746 511.809913 161.193746 530.496602 161.193746 545.645393 146.044956 545.645393 127.358266 545.645393 108.671577 530.496602 93.522787 511.809913 93.522787Z"
+                            p-id="2710" fill="#515151"></path>
+                    </svg>
+                </span>
+                订阅期刊文章
+            </div>
+
+            <div class="flex justify-center w-full" v-if="loading">
+                <span class="loading loading-dots loading-md"></span>
+            </div>
+
+            <template v-else>
+                <li class="my-4 w-full ">
+                    <a :href="`/articles/${ article.id }`" v-for="article in articles" :key="article.id"
+                        class=" max-sm:flex-col max-sm:items-center max-sm:gap-0 mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
+                        <img class=" w-40 m-4 rounded-md max-sm:w-[80%]" src='/assets/hero/hero.jpg' />
+                        <div class="flex flex-col flex-1  
+                          max-sm:w-[90%] max-sm:items-center
+                          max-sm:px-5 max-sm:pb-5 gap-1 items-start justify-center">
+                            <h2 class="text-xl font-semibold max-sm:pb-2">{{
+                                article.properties["文章标题"].title[0].plain_text }}</h2>
+                            <p class=" text-sm text-base-content/80">
+                                {{ article.properties["文章内容"].rich_text[0].plain_text.slice(0, 25) + '...' }}
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </template>
+
+        </ul>
+        <!-- Read more -->
+        <div class="flex flex-1 justify-end">
+            <a href="/posts"
+                class="flex items-center gap-1 px-4 py-2 hover:cursor-pointer self-end bg-white/0 border-none hover:backdrop-blur-sm rounded-3xl hover:bg-gray-300/30">Read
+                More
+                <span>
+                    <svg t="1743312005051" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3440" width="16" height="16">
+                        <path
+                            d="M514 912c-219.9 0-398.8-178.9-398.8-398.9 0-219.9 178.9-398.8 398.8-398.8s398.8 178.9 398.8 398.8c0 220-178.9 398.9-398.8 398.9z m0-701.5c-166.9 0-302.7 135.8-302.7 302.7S347.1 815.9 514 815.9s302.7-135.8 302.7-302.7S680.9 210.5 514 210.5z"
+                            fill="#13227a" p-id="3441"></path>
+                        <path
+                            d="M402.5 677.3c0-15 5.7-30.1 17.2-41.5l122.6-122.6-122.6-122.6c-22.9-22.9-22.9-60.2 0-83.1 22.9-22.9 60.2-22.9 83.1 0l164.1 164.1c22.9 22.9 22.9 60.2 0 83.1L502.8 718.8c-22.9 22.9-60.2 22.9-83.1 0-11.5-11.4-17.2-26.5-17.2-41.5z"
+                            fill="#13227a" p-id="3442"></path>
+                    </svg>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import fetchArticles from '../utilities/FetchNotion';
+
+const articles = ref([]);
+const loading = ref(true);
+const error = ref(null);
+onMounted(async () => {
+    try {
+        const data = await fetchArticles()
+        articles.value = data;
+        console.log(articles.value);
+
+    } catch (err) {
+        console.error("在RSSPassageListPre组件中获取文章信息出错", err);
+        error.value = err;
+
+    } finally {
+        loading.value = false
+    }
+
+}
+)
+</script>
+
+<style lang="scss" scoped></style>

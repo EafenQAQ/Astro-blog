@@ -10,14 +10,21 @@
   },
   "dependencies": {
     "@astrojs/vue": "^5.0.8",
+    "@notionhq/client": "^2.3.0",
     "@tailwindcss/vite": "^4.0.17",
     "animejs": "^3.2.2",
     "astro": "^5.5.5",
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
     "daisyui": "^5.0.9",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
     "katelog": "^0.0.6",
     "lucide-vue-next": "^0.485.0",
+    "marked": "^15.0.7",
     "tailwindcss": "^4.0.17",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "sass-embedded": "^1.86.0"
