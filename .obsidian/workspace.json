@@ -170,6 +170,9 @@
   },
   "active": "3d8004ead91cc40d",
   "lastOpenFiles": [
+    "src/components/showPassageNavi.vue",
+    "src/components/ScrolltoTop.vue",
+    "public/assets/postThumbs/cmake-build.png",
     "public/assets/postThumbs/env.png",
     "public/assets/postThumbs/dockerenv.png",
     "src/pages/posts/post-2.md",
