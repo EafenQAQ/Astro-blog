@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col max-sm:fixed max-sm:top-10 max-sm:right-0 max-sm:bg-white/80  items-center flex-1">
+    <div class="flex flex-col  max-sm:fixed max-sm:top-10 max-sm:right-0 max-sm:bg-white/80  items-center flex-1">
         <div>
-            <ShowPassageNavi  @togglePassageNavi="togglePassageNavi" />
+            <ShowPassageNavi @togglePassageNavi="togglePassageNavi" />
         </div>
         <Transition name="PassageNavi">
             <aside v-if="showPassageNavi"
@@ -198,7 +198,7 @@ onMounted(() => {
 })
 const togglePassageNavi = () => {
     showPassageNavi.value = !showPassageNavi.value
-    
+
 }
 
 

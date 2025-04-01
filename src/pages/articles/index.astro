@@ -1,0 +1,25 @@
+---
+import RSSPassageList from '../../components/RSSPassageList.vue';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout pageTitle="文章列表">
+    
+    <div id="AllPosts" class="flex flex-col items-center w-full">
+
+            <RSSPassageList client:load />
+
+        <!-- 页码 -->
+        <div class="join ">
+            <input
+              class="join-item btn btn-square"
+              type="radio"
+              name="options"
+              aria-label="1"
+              checked="checked" />
+            <input class="join-item btn btn-square" type="radio" name="options" aria-label="2" />
+            <input class="join-item btn btn-square" type="radio" name="options" aria-label="3" />
+            <input class="join-item btn btn-square" type="radio" name="options" aria-label="4" />
+          </div>
+    </div>
+</Layout>

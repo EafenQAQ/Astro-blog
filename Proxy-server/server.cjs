@@ -42,6 +42,43 @@ app.get("/api/notion-articles", async (req, res) => {
           direction: "descending",
         },
       ],
+      page_size: 9,
+    });
+
+    res.json(response.results); // 返回 Notion API 查询结果中的数据数组
+  } catch (error) {
+    console.error("Error querying Notion database:", error);
+    res.status(500).json({ error: "Failed to fetch data from Notion" });
+  }
+});
+
+// 接口2: 获取文章preview
+app.get("/api/notion-articles-pre", async (req, res) => {
+  try {
+    if (!notion || !databaseId) {
+      return res
+        .status(500)
+        .json({ error: "Notion API key or Database ID not configured." });
+    }
+
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      // filter: {
+      //   or: [
+      //     {
+      //       property: "文章标题",
+      //       title: {
+      //         contains: "情绪",
+      //       },
+      //     },
+      //   ],
+      // },
+      sorts: [
+        {
+          property: "创建时间",
+          direction: "descending",
+        },
+      ],
       page_size: 3,
     });
 

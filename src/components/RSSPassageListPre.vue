@@ -39,7 +39,7 @@
         </ul>
         <!-- Read more -->
         <div class="flex flex-1 justify-end">
-            <a href="/posts"
+            <a href="/articles"
                 class="flex items-center gap-1 px-4 py-2 hover:cursor-pointer self-end bg-white/0 border-none hover:backdrop-blur-sm rounded-3xl hover:bg-gray-300/30">Read
                 More
                 <span>
@@ -68,7 +68,7 @@ const loading = ref(true);
 const error = ref(null);
 onMounted(async () => {
     try {
-        const data = await fetchArticles()
+        const data = await fetchArticles('http://localhost:4399/api/notion-articles-pre')
         articles.value = data;
         articles.value.slice(0, 4)
     } catch (err) {
