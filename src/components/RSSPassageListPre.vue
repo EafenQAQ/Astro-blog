@@ -22,14 +22,14 @@
                 <li class="my-4 w-full ">
                     <a :href="`/articles/${article.id}`" v-for="article in articles" :key="article.id"
                         class=" max-sm:flex-col max-sm:items-center max-sm:gap-0 mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
-                        <img class=" w-40 m-4 rounded-md max-sm:w-[80%]" src='/assets/hero/hero.jpg' />
+                        <img class=" w-40 m-4 rounded-md max-sm:w-[80%]" :src="article.properties['Image URL'].url" />
                         <div class="flex flex-col flex-1  
                           max-sm:w-[90%] max-sm:items-center
                           max-sm:px-5 max-sm:pb-5 gap-1 items-start justify-center">
                             <h2 class="text-xl font-semibold max-sm:pb-2">{{
-                                article.properties["文章标题"].title[0].plain_text }}</h2>
+                                article.properties.Name.title[0].plain_text }}</h2>
                             <p class=" text-sm text-base-content/80">
-                                {{ article.properties["文章内容"].rich_text[0].plain_text.slice(0, 25) + '...' }}
+                                {{ article.properties.content.rich_text[0].plain_text + '...' }}
                             </p>
                         </div>
                     </a>
@@ -71,6 +71,8 @@ onMounted(async () => {
         const data = await fetchArticles('http://localhost:4399/api/notion-articles-pre')
         articles.value = data;
         articles.value.slice(0, 4)
+        console.log(articles.value);
+
     } catch (err) {
         console.error("在RSSPassageListPre组件中获取文章信息出错", err);
         error.value = err;

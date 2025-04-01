@@ -38,7 +38,7 @@ app.get("/api/notion-articles", async (req, res) => {
       // },
       sorts: [
         {
-          property: "创建时间",
+          property: "Created time",
           direction: "descending",
         },
       ],
@@ -75,7 +75,7 @@ app.get("/api/notion-articles-pre", async (req, res) => {
       // },
       sorts: [
         {
-          property: "创建时间",
+          property: "Created time",
           direction: "descending",
         },
       ],

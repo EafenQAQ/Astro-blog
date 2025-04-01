@@ -26,12 +26,12 @@
                   rounded-2xl p-5">
                     <a :href="`/articles/${article.id}`" class="hover:cursor-pointer">
                         <img class="thumbnails w-[95%] h-45 m-4 mx-auto rounded-md max-sm:w-[90%]"
-                            src="/assets/hero/hero.jpg" alt="封面图" />
+                            :src="article.properties['Image URL'].url" alt="封面图" />
                         <div class="flex flex-col gap-2">
                             <h2 class="text-xl max-sm:text-xl font-semibold max-sm:pb-5">{{
-                                article.properties["文章标题"].title[0].plain_text }}</h2>
+                                article.properties.Name.title[0].plain_text }}</h2>
                             <p class=" text-sm text-base-content/80">
-                                {{ article.properties["文章内容"].rich_text[0].plain_text.slice(0, 40) + '...' }}
+                                {{ article.properties.content.rich_text[0].plain_text.slice(0, 40) + '...' }}
                             </p>
                         </div>
                     </a>
