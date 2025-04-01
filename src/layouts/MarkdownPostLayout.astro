@@ -50,6 +50,16 @@ const pageTitle = Astro.props.frontmatter.title
      <IntroCard client:load />
      <ScrolltoTop client:load />
      <Footer />
+     
+
+     <script>
+        const currentTheme = localStorage.getItem("userTheme")
+        if (currentTheme) {
+            let body = document.body
+            body.setAttribute("data-theme", currentTheme);
+
+        }
+    </script>
     </body>
 </html>
 

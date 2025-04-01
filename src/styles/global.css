@@ -12,14 +12,17 @@
   z-index: 40;
 }
 
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    background-image 0.3s ease;
+}
+
 body {
   background-image: url(/assets/backdrop.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    background-image 0.3s ease;
 }
 
 [data-theme="synthwave"] {

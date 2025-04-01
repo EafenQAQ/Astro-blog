@@ -32,6 +32,14 @@ const {pageTitle} = Astro.props
 		<!-- Sticky Scroll-to-Top Button -->
 		<ScrolltoTop client:load/>
 
+		<script>
+			const currentTheme = localStorage.getItem("userTheme")
+			if (currentTheme) {
+				let body = document.body
+				body.setAttribute("data-theme", currentTheme);
+
+			}
+		</script>
 		
 	</body>
 </html>

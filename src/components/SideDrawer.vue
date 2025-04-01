@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import toggleTheme from '../utilities/ToggleTheme';
+import {toggleTheme} from '../utilities/ToggleTheme';
 
 </script>
 
