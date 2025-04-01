@@ -3,25 +3,25 @@
         <div class="flex gap-4 items-center">
             <img class="rounded-full" src="../../public//assets/momo_head.jpg" width="75" alt="avatar">
             <div>
-                <h2 class="text-blue-800 text-2xl font-semibold">Momo</h2>
+                <div class="text-blue-800 text-2xl font-semibold">Momo</div>
                 <p class="text-base-content">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
             </div>
         </div>
 
         <div class=" grid grid-cols-2 gap-4 mt-8">
             <div class="flex flex-col gap-2">
-                <h2 class="font-semibold">Published</h2>
+                <div class="font-semibold">Published</div>
                 <p class="text-base-content">2025-03-30</p>
             </div>
             <div class="flex flex-col gap-2">
-                <h2 class="font-semibold">Tags</h2>
+                <div class="font-semibold">Tags</div>
                 <p class="text-base-content">none</p>
             </div>
 
         </div>
 
         <div class="mt-8">
-            <h2 class="font-semibold">Share</h2>
+            <div class="font-semibold">Share</div>
             <div class="mt-2     flex gap-4">
                 <button class="hover:bg-gray-100 hover:cursor-pointer p-2 rounded-full">
                     <a href=" https://space.bilibili.com/31331836" target="_blank">
@@ -80,7 +80,7 @@
 </script>
 
 <style scoped>
-h2 {
+div {
     color: rgb(56, 56, 119);
 }
 </style>

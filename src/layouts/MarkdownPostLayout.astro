@@ -7,7 +7,15 @@ import PassageNavi from '../components/PassageNavi.vue'
 import SideProfile from '../components/SideProfile.vue'
 import SideDrawer from '../components/SideDrawer.vue'
 import IntroCard from '../components/IntroCard.vue'
+import ScrolltoTop from '../components/ScrolltoTop.vue'
+import ShowPassageNavi from '../components/showPassageNavi.vue'
 
+let showPassageNavi = false;
+const togglePassageNavi = () => {
+    console.log('点击了');
+    
+    showPassageNavi = !showPassageNavi
+}
 
 
 const pageTitle = Astro.props.frontmatter.title
@@ -39,8 +47,8 @@ const pageTitle = Astro.props.frontmatter.title
              <PassageNavi client:load />
           
      </div>
-     <IntroCard />
-
+     <IntroCard client:load />
+     <ScrolltoTop client:load />
      <Footer />
     </body>
 </html>

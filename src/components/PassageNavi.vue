@@ -1,65 +1,72 @@
 <template>
-    <div class="flex flex-col max-2xl:hidden items-center flex-1">
-        <aside
-            class="toc w-64 max-w-[20rem] bg-white/30 backdrop-blur-md p-5 rounded-xl shadow-md ml-5 sticky top-10 h-fit">
-            <h2 class="text-lg font-bold mb-4">目录</h2>
-            <div class="tree-structure text-sm">
-                <template v-for="(heading, index) in processedHeadings" :key="index">
-                    <!-- Only render top-level headings directly -->
-                    <div v-if="heading.level === 'h1'" class="heading-item">
-                        <div class="flex items-center cursor-pointer" @click="toggleHeading(heading.id)">
-                            <span v-if="hasChildren(heading.id)" class="toggle-icon mr-1">
-                                {{ isExpanded(heading.id) ? '▼' : '►' }}
-                            </span>
-                            <span v-else class="mr-4"></span>
-                            <a href="javascript:void(0)" @click.stop="scrollToHeading(heading.id)"
-                                class="text-blue-500 hover:underline">
-                                {{ heading.text }}
-                            </a>
-                        </div>
-
-                        <!-- Render children if expanded -->
-                        <div v-if="isExpanded(heading.id)" class="pl-4 mt-1">
-                            <template v-for="(child, childIndex) in getChildren(heading.id)"
-                                :key="`${index}-${childIndex}`">
-                                <div class="heading-item">
-                                    <div class="flex items-center cursor-pointer" @click="toggleHeading(child.id)">
-                                        <span v-if="hasChildren(child.id)" class="toggle-icon mr-1">
-                                            {{ isExpanded(child.id) ? '▼' : '►' }}
-                                        </span>
-                                        <span v-else class="mr-4"></span>
-                                        <a href="javascript:void(0)" @click.stop="scrollToHeading(child.id)"
-                                            class="text-blue-500 hover:underline">
-                                            {{ child.text }}
-                                        </a>
-                                    </div>
-
-                                    <!-- Render grandchildren if expanded -->
-                                    <div v-if="isExpanded(child.id)" class="pl-4 mt-1">
-                                        <div v-for="(grandchild, grandchildIndex) in getChildren(child.id)"
-                                            :key="`${index}-${childIndex}-${grandchildIndex}`" class="heading-item">
-                                            <div class="flex items-center">
-                                                <span class="mr-4"></span>
-                                                <a href="javascript:void(0)"
-                                                    @click.stop="scrollToHeading(grandchild.id)"
-                                                    class="text-blue-500 hover:underline">
-                                                    {{ grandchild.text }}
-                                                </a>
+    <div class="flex flex-col max-sm:fixed max-sm:top-10 max-sm:right-0 max-sm:bg-white/80  items-center flex-1">
+        <div>
+            <ShowPassageNavi  @togglePassageNavi="togglePassageNavi" />
+        </div>
+        <Transition name="PassageNavi">
+            <aside v-if="showPassageNavi"
+                class="toc w-64 max-w-[20rem] bg-white/30 backdrop-blur-md p-5 rounded-xl shadow-md ml-5 sticky top-10 h-fit">
+                <div class="text-lg font-bold mb-4">目录</div>
+                <div class="tree-structure text-sm">
+                    <template v-for="(heading, index) in processedHeadings" :key="index">
+                        <!-- Only render top-level headings directly -->
+                        <div v-if="heading.level === 'h1'" class="heading-item">
+                            <div class="flex items-center cursor-pointer" @click="toggleHeading(heading.id)">
+                                <span v-if="hasChildren(heading.id)" class="toggle-icon mr-1">
+                                    {{ isExpanded(heading.id) ? '▼' : '►' }}
+                                </span>
+                                <span v-else class="mr-4"></span>
+                                <a href="javascript:void(0)" @click.stop="scrollToHeading(heading.id)"
+                                    class="text-blue-500 hover:underline">
+                                    {{ heading.text }}
+                                </a>
+                            </div>
+                            <!-- Render children if expanded -->
+                            <div v-if="isExpanded(heading.id)" class="pl-4 mt-1">
+                                <template v-for="(child, childIndex) in getChildren(heading.id)"
+                                    :key="`${index}-${childIndex}`">
+                                    <div class="heading-item">
+                                        <div class="flex items-center cursor-pointer" @click="toggleHeading(child.id)">
+                                            <span v-if="hasChildren(child.id)" class="toggle-icon mr-1">
+                                                {{ isExpanded(child.id) ? '▼' : '►' }}
+                                            </span>
+                                            <span v-else class="mr-4"></span>
+                                            <a href="javascript:void(0)" @click.stop="scrollToHeading(child.id)"
+                                                class="text-blue-500 hover:underline">
+                                                {{ child.text }}
+                                            </a>
+                                        </div>
+                                        <!-- Render grandchildren if expanded -->
+                                        <div v-if="isExpanded(child.id)" class="pl-4 mt-1">
+                                            <div v-for="(grandchild, grandchildIndex) in getChildren(child.id)"
+                                                :key="`${index}-${childIndex}-${grandchildIndex}`" class="heading-item">
+                                                <div class="flex items-center">
+                                                    <span class="mr-4"></span>
+                                                    <a href="javascript:void(0)"
+                                                        @click.stop="scrollToHeading(grandchild.id)"
+                                                        class="text-blue-500 hover:underline">
+                                                        {{ grandchild.text }}
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </template>
+                                </template>
+                            </div>
                         </div>
-                    </div>
-                </template>
-            </div>
-        </aside>
+                    </template>
+                </div>
+            </aside>
+        </Transition>
     </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
+import ShowPassageNavi from './showPassageNavi.vue';
+
+
+
 
 // 响应式变量存储标题数据
 const headings = ref([]);
@@ -178,6 +185,16 @@ const scrollToHeading = (id) => {
         });
     }
 };
+
+// 显示或隐藏目录
+
+const showPassageNavi = ref(false)
+const togglePassageNavi = () => {
+    showPassageNavi.value = !showPassageNavi.value
+    
+}
+
+
 </script>
 
 <style scoped>
@@ -200,5 +217,15 @@ const scrollToHeading = (id) => {
 
 a {
     color: #252525;
+}
+
+.PassageNavi-enter-active,
+.PassageNavi-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.PassageNavi-enter-from,
+.PassageNavi-leave-to {
+    opacity: 0;
 }
 </style>

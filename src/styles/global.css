@@ -29,3 +29,10 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+
+/* 在小屏幕上自动把字体缩小 */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}

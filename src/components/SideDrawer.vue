@@ -19,8 +19,8 @@
             <ul class="menu bg-base-200 text-base-content min-h-full w-60 p-4">
                 <!-- Sidebar content here -->
                 <li><a href="/">Home</a></li>
-                <li><a>about</a></li>
-                <li><a href="/">Posts</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/posts">Posts</a></li>
             </ul>
         </div>
         <!-- logo -->

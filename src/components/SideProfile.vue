@@ -1,5 +1,6 @@
 <template>
-    <nav class=" h-fit bg-white/0 backdrop-blur-md  max-w-sm mx-auto sticky top-10 flex-1 flex flex-col w-full rounded-3xl items-center py-4">
+    <nav
+        class=" h-fit bg-white/0 backdrop-blur-md  max-w-sm mx-auto sticky top-10 flex-1 flex flex-col w-full rounded-3xl items-center py-4">
         <!-- Profile Avatar -->
         <div class="mb-8">
             <img src="/assets/momo_head.jpg" alt="User Avatar"
@@ -8,7 +9,7 @@
 
         <!-- Profile 文本 -->
         <div class="flex flex-col px-4 gap-4 items-center  w-full">
-            <h1 class="text-4xl font-semibold text-blue-800">MOMO</h1>
+            <div class="text-4xl font-semibold text-blue-800">MOMO</div>
             <p class="text-gray-500">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
         </div>
 
@@ -17,8 +18,13 @@
         <!-- Bottom Icons -->
         <div class="my-4 flex space-y-4 gap-15 rounded-2xl px-4 pt-4 ">
             <BottomIcon icon="coffee" />
-            <BottomIcon icon="github" />
-            <BottomIcon icon="tv" />
+            <a href="https://github.com/github-newstar" target="_blank">
+                <BottomIcon icon="github" />
+            </a>
+            <a href=" https://space.bilibili.com/31331836" target="_blank">
+
+                <BottomIcon icon="tv" />
+            </a>
             <BottomIcon icon="rss" />
         </div>
     </nav>
