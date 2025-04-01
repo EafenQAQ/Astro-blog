@@ -5,7 +5,7 @@ pubDate: 2025-03-28
 description: "这是一个一个一个容器化开发环境搭建教程！"
 author: "Momo"
 image:
-  url: "/assets/postThumbs/dockerenv.png"
+  url: "/assets/postThumbs/env.png"
   alt: "img1"
 tags: ["astro", "blogging", "learning in public"]
 
