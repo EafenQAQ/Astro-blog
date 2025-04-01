@@ -3,12 +3,9 @@ import '../styles/global.css'
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import SideDrawer from '../components/SideDrawer.vue'
+import ScrolltoTop from '../components/ScrolltoTop.vue'
 
 const {pageTitle} = Astro.props
-
-
-
-
 ---
 
 <!doctype html>
@@ -31,6 +28,11 @@ const {pageTitle} = Astro.props
 					</div>
 					<Footer />
 		</div>
+
+		<!-- Sticky Scroll-to-Top Button -->
+		<ScrolltoTop client:load/>
+
+		
 	</body>
 </html>
 
