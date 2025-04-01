@@ -11,7 +11,7 @@
                             p-id="2710" fill="#515151"></path>
                     </svg>
                 </span>
-                订阅期刊文章
+                AI & 技术新进展
             </div>
 
             <div class="flex justify-center w-full" v-if="loading">
