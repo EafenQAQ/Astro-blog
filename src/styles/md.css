@@ -109,12 +109,51 @@
 
 pre {
   padding-left: 2rem;
-  padding-top: 0.25rem;
+  padding-top: 35px;
   padding-bottom: 0.25rem;
   border-radius: 10px; /* 设置圆角大小，你可以根据需要调整数值 */
   overflow-x: auto; /* 可选：如果代码过长，允许横向滚动 */
   margin-bottom: 1em; /* 可选：设置容器的下边距 */
   margin-top: 1em;
+  position: relative; /* 为顶部装饰条定位做准备 */
+  background-color: #282c34; /* 深色背景，可以根据图片颜色调整 */
+  color: #abb2bf; /* 浅色代码文字，可以根据图片颜色调整 */
+  padding-right: 20px; /* 增加右内边距，为装饰条留出空间 */
+  
 }
 
+code {
+  font-family: 'Consolas', 'Monaco', 'Menlo', monospace; /* 常用的等宽字体 */
+  display: block; /* 使 <code> 元素独占一行，方便 pre 的 padding 生效 */
+  white-space: pre-wrap; /* 实现代码根据换行符换行 */
+}
+
+/* 顶部装饰条样式 */
+pre::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px; /* 装饰条的高度，可以根据图片调整 */
+  background-color: #3e4451; /* 装饰条的背景色，可以根据图片颜色调整 */
+  border-top-left-radius: 10px; /* 与 pre 的左上角圆角一致 */
+  border-top-right-radius: 10px; /* 与 pre 的右上角圆角一致 */
+  padding-left: 10px; /* 为圆点留出空间 */
+  box-sizing: border-box; /* 确保 padding 不会增加元素的总宽度和高度 */
+}
+
+/* 顶部装饰条上的圆点 */
+pre::after {
+  content: '';
+  position: absolute;
+  top: 8px; /* 调整圆点垂直位置 */
+  left: 15px; /* 调整第一个圆点水平位置 */
+  width: 12px; /* 圆点大小 */
+  height: 12px; /* 圆点大小 */
+  border-radius: 50%;
+  background-color: #ff5f56; /* 红色圆点颜色，可以根据图片调整 */
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f; /* 黄色和绿色圆点，通过 box-shadow 实现 */
+}
 
