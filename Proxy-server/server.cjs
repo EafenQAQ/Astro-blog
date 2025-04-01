@@ -26,22 +26,23 @@ app.get("/api/notion-articles", async (req, res) => {
 
     const response = await notion.databases.query({
       database_id: databaseId,
-      filter: {
-        or: [
-          {
-            property: "文章标题",
-            title: {
-              contains: "情绪",
-            },
-          },
-        ],
-      },
+      // filter: {
+      //   or: [
+      //     {
+      //       property: "文章标题",
+      //       title: {
+      //         contains: "情绪",
+      //       },
+      //     },
+      //   ],
+      // },
       sorts: [
         {
           property: "创建时间",
-          direction: "ascending",
+          direction: "descending",
         },
       ],
+      page_size: 3,
     });
 
     res.json(response.results); // 返回 Notion API 查询结果中的数据数组

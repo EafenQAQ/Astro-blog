@@ -20,7 +20,7 @@
 
             <template v-else>
                 <li class="my-4 w-full ">
-                    <a :href="`/articles/${ article.id }`" v-for="article in articles" :key="article.id"
+                    <a :href="`/articles/${article.id}`" v-for="article in articles" :key="article.id"
                         class=" max-sm:flex-col max-sm:items-center max-sm:gap-0 mx-5 px-2 gap-2 rounded-2xl shadow-md hover:bg-gray-100/50 transition duration-150 flex">
                         <img class=" w-40 m-4 rounded-md max-sm:w-[80%]" src='/assets/hero/hero.jpg' />
                         <div class="flex flex-col flex-1  
@@ -70,8 +70,7 @@ onMounted(async () => {
     try {
         const data = await fetchArticles()
         articles.value = data;
-        console.log(articles.value);
-
+        articles.value.slice(0, 4)
     } catch (err) {
         console.error("在RSSPassageListPre组件中获取文章信息出错", err);
         error.value = err;
