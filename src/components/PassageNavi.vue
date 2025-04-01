@@ -41,12 +41,30 @@
                                             <div v-for="(grandchild, grandchildIndex) in getChildren(child.id)"
                                                 :key="`${index}-${childIndex}-${grandchildIndex}`" class="heading-item">
                                                 <div class="flex items-center">
-                                                    <span class="mr-4"></span>
+                                                    <span v-if="hasChildren(grandchild.id)" class="toggle-icon mr-1">
+                                                        {{ isExpanded(grandchild.id) ? '▼' : '►' }}
+                                                    </span>
+                                                    <span v-else class="mr-4"></span>
                                                     <a href="javascript:void(0)"
                                                         @click.stop="scrollToHeading(grandchild.id)"
                                                         class="text-blue-500 hover:underline">
                                                         {{ grandchild.text }}
                                                     </a>
+                                                </div>
+                                                <!-- Render great-grandchildren if expanded -->
+                                                <div v-if="isExpanded(grandchild.id)" class="pl-4 mt-1">
+                                                    <div v-for="(greatGrandchild, greatGrandchildIndex) in getChildren(grandchild.id)"
+                                                        :key="`${index}-${childIndex}-${grandchildIndex}-${greatGrandchildIndex}`"
+                                                        class="heading-item">
+                                                        <div class="flex items-center">
+                                                            <span class="mr-4"></span>
+                                                            <a href="javascript:void(0)"
+                                                                @click.stop="scrollToHeading(greatGrandchild.id)"
+                                                                class="text-blue-500 hover:underline">
+                                                                {{ greatGrandchild.text }}
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,6 +114,7 @@ const hasChildren = (headingId) => {
     // 检查标题等级关系判断是否有子标题
     if (currentHeading.level === 'h1' && ['h2', 'h3'].includes(nextHeading.level)) return true;
     if (currentHeading.level === 'h2' && nextHeading.level === 'h3') return true;
+    if (currentHeading.level === 'h3' && nextHeading.level === 'h4') return true; // 支持 h3 的子标题
 
     return false;
 };
@@ -119,8 +138,9 @@ const getChildren = (headingId) => {
 
         // 如果是直接子标题，添加到结果中
         if (
-            (currentHeading.level === 'h1' && heading.level === 'h2') ||
-            (currentHeading.level === 'h2' && heading.level === 'h3')
+            (currentHeading.level === 'h1' && ['h2', 'h3'].includes(heading.level)) || // h1 可以直接包含 h2 或 h3
+            (currentHeading.level === 'h2' && heading.level === 'h3') ||
+            (currentHeading.level === 'h3' && heading.level === 'h4') // 支持 h3 的子标题
         ) {
             children.push(heading);
         }
