@@ -2,10 +2,10 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "容器化开发环境搭建"
 pubDate: 2025-03-28
-description: "这是一个一个一个容器化开发环境搭建教程！一篇在困倦与迷茫中诞生的语文课习作。从最初的困惑，到恍悟的悚然——当我捧着被展览的作文本时，连我自己也分不清，这份被肯定的喜悦里……是否也掺杂着阿Q式的自我安慰呢？"
+description: "这是一个一个一个容器化开发环境搭建教程！"
 author: "Momo"
 image:
-  url: "/assets/postThumbs/example_2.jpg"
+  url: "/assets/postThumbs/env.png"
   alt: "img1"
 tags: ["astro", "blogging", "learning in public"]
 

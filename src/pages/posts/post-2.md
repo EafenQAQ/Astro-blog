@@ -4,7 +4,7 @@ title: "基于docker的linux开发环境配置"
 author: "mono"
 description: "这是一个一个Linux的开发环境配置"
 image:
-  url: "https://docs.astro.build/default-og-image.png"
+  url: "assets/postThumbs/dockerenv.png"
   alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
