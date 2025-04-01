@@ -1,7 +1,7 @@
 <template>
     <div id="IntroCard" class=" mx-auto my-8 max-w-[45rem] bg-white/30 p-8 rounded-2xl backdrop-blur-sm ">
         <div class="flex gap-4 items-center">
-            <img class="rounded-full" src="../../public//assets/momo_head.jpg" width="75" alt="avatar">
+            <img class="rounded-full" src="/assets/momo_head.jpg" width="75" alt="avatar">
             <div>
                 <div class="text-blue-800 text-2xl font-semibold">Momo</div>
                 <p class="text-base-content">Momo是一个一个一个Homo, 希望能够成为一个一个很勇的Homo</p>
