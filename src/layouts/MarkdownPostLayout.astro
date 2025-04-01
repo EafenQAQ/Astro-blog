@@ -6,7 +6,11 @@ import Footer from '../components/Footer.vue'
 import PassageNavi from '../components/PassageNavi.vue'
 import SideProfile from '../components/SideProfile.vue'
 import SideDrawer from '../components/SideDrawer.vue'
+import IntroCard from '../components/IntroCard.vue'
 
+
+
+const pageTitle = Astro.props.frontmatter.title
 
 ---
 
@@ -15,7 +19,7 @@ import SideDrawer from '../components/SideDrawer.vue'
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Document</title>
+        <title>{pageTitle}</title>
     </head>
     <body>
     <SideDrawer client:load />
@@ -35,6 +39,7 @@ import SideDrawer from '../components/SideDrawer.vue'
              <PassageNavi client:load />
           
      </div>
+     <IntroCard />
 
      <Footer />
     </body>
@@ -53,4 +58,6 @@ import SideDrawer from '../components/SideDrawer.vue'
       backdrop-filter: blur(5px);
       background-color: rgba(255, 255, 255, 0.5);
    }
+
+  
 </style>

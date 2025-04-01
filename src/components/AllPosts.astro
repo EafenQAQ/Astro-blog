@@ -16,9 +16,9 @@ if (import.meta.env.DEV) {
         文章列表
     </div>
 
-    <ul class="grid grid-cols-2 grid-rows-3 gap-6 lg:grid-cols-3  justify-items-center max-sm:grid-cols-1">
+    <ul class="grid grid-cols-2 grid-rows-3 gap-6 2xl:grid-cols-3  justify-items-center max-sm:grid-cols-1">
     {allPosts.map((post: any) => (
-      <li class="flex flex-col justify-between my-4 bg-gray-200/30 hover:bg-gray-300/30  
+      <li class="flex flex-col w-[80%] justify-between my-4 bg-gray-200/30 hover:bg-gray-300/30  
       lg:size-110 lg:max-h-[25rem]  transition-all duration-100 ease-in-out backdrop-blur-sm 
       rounded-2xl p-5">
         <a href={post.url} class=" hover:cursor-pointer"  >
