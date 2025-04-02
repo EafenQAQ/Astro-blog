@@ -26,19 +26,27 @@ const fetchArticles = async (endpoint) => {
       path = "/articles";
     } else if (endpoint === "/notion-articles-pre") {
       path = "/articles-preview";
+    } else if (endpoint.startsWith("/article/")) {
+      // 处理获取单篇文章的请求
+      path = endpoint;
     } else {
       path = endpoint;
     }
 
     const url = `${baseUrl}${path}`;
-    console.log(`Fetching articles from: ${url}`);
+    console.log(`Fetching from: ${url}`);
 
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.error("Error fetching articles:", error);
+    console.error("Error fetching data:", error);
     throw error;
   }
+};
+
+// 添加获取单篇文章的函数
+export const fetchArticle = async (id) => {
+  return fetchArticles(`/article/${id}`);
 };
 
 export default fetchArticles;
