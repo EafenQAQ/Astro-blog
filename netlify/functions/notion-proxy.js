@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
   if (!event.path.startsWith('/api')) {
     return {
       statusCode: 404,
-      body: JSON.stringify({ message: 'Not Found' }),
+      body: JSON.stringify({ message: 'Not Found啊啊' }),
     };
   }
 
