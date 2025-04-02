@@ -68,7 +68,7 @@ const loading = ref(true);
 const error = ref(null);
 onMounted(async () => {
     try {
-        const data = await fetchArticles('http://localhost:4399/api/notion-articles-pre')
+        const data = await fetchArticles('/notion-articles-pre')
         articles.value = data;
         articles.value.slice(0, 4)
         console.log(articles.value);
