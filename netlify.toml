@@ -1,2 +1,5 @@
 [functions]
   directory = "netlify/functions/"
+[build.environment]
+  NOTION_API_KEY = "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"
+  NOTION_DATABASE_ID = "1c844bf26ba28032bf5ed1f9b40b51ea"
