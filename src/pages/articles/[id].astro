@@ -1,18 +1,15 @@
 ---
 import '../../styles/md.css'
-import axios from 'axios';
 import { marked } from 'marked'; 
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+import fetchArticles from '../../utilities/FetchNotion';
 
 export async function getStaticPaths() {
   try {
-    const response = await axios.get('http://localhost:4399/api/notion-articles');
-    if (response.status !== 200) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const articles = response.data;
-
-    return articles.map((article:any) => ({
+    // Use the same fetchArticles utility that works in both environments
+    const articles = await fetchArticles('/notion-articles');
+    
+    return articles.map((article) => ({
       params: { id: article.id },
       props: { article },
     }));
@@ -23,14 +20,6 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-
-// if (!article) {
-//   return (
-//     <Layout title="文章未找到">
-//       <p>抱歉，该文章不存在。</p>
-//     </Layout>
-//   );
-// }
 
 const title = article.properties?.Name?.title?.[0]?.plain_text || '无标题';
 const contentRichText = article.properties?.content?.rich_text || [];
@@ -65,10 +54,3 @@ const renderedContent = marked.parse(contentPlainText);
     
     <div class="my-5 text-gray-600 text-sm text-end" >创建时间: {new Date(article.created_time).toLocaleDateString()}</div>
 </MarkdownPostLayout>
-
-<style>
-
-
-
-
-</style>
