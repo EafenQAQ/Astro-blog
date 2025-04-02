@@ -1,20 +1,43 @@
 import axios from "axios";
-// 设定base url
 
-const liveUrl =
-  "https://momo-blog-test.netlify.app/.netlify/functions/notion-proxy/api";
-const devUrl = "http://localhost:4399/api";
-const netlifyDevUrl =
-  "http://localhost:8888/.netlify/functions/notion-proxy/api";
+// Base URLs for different environments
+const PRODUCTION_URL = "/.netlify/functions/notion-api";
+const NETLIFY_DEV_URL = "http://localhost:8888/.netlify/functions/notion-api";
 
-// 从Notion数据库获取文章
-const fetchArticles = async (url) => {
+// Determine the appropriate base URL based on environment
+const getBaseUrl = () => {
+  if (import.meta.env.DEV) {
+    // Local development with Netlify CLI
+    return NETLIFY_DEV_URL;
+  } else {
+    // Production/deployed environment
+    return PRODUCTION_URL;
+  }
+};
+
+// Function to fetch articles from Notion database via our Netlify Function
+const fetchArticles = async (endpoint) => {
   try {
-    const res = await axios.get(netlifyDevUrl + url);
-    const articles = res.data;
-    return articles;
-  } catch (err) {
-    console.log(err);
+    const baseUrl = getBaseUrl();
+    let path;
+
+    // Map the endpoint to the appropriate path
+    if (endpoint === "/notion-articles") {
+      path = "/articles";
+    } else if (endpoint === "/notion-articles-pre") {
+      path = "/articles-preview";
+    } else {
+      path = endpoint;
+    }
+
+    const url = `${baseUrl}${path}`;
+    console.log(`Fetching articles from: ${url}`);
+
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    throw error;
   }
 };
 
