@@ -13,8 +13,8 @@
 }
 
 .theme-transition {
-  transition: background-color 0.3s ease, color 0.3s ease,
-    background-image 0.3s ease;
+  transition: background-color 0.4s ease, color 0.5s ease,
+    background-image 0.3s ease-in-out;
 }
 
 body {
