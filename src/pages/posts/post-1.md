@@ -7,7 +7,7 @@ author: "Momo"
 image:
   url: "/assets/postThumbs/env.png"
   alt: "img1"
-tags: ["astro", "blogging", "learning in public"]
+tags: ["docker"]
 
 ---
 
