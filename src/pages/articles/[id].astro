@@ -2,8 +2,7 @@
 import '../../styles/md.css'
 import axios from 'axios';
 import { marked } from 'marked'; 
-import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
-
+import MarkdownArticleLayout from '../../layouts/MarkdownArticleLayout.astro';
 export async function getStaticPaths() {
   try {
     const response = await axios.get('http://localhost:4399/api/notion-articles');
@@ -38,9 +37,11 @@ const contentPlainText = contentRichText.map(item => item.plain_text).join('');
 
 // 如果你的文章内容是 Markdown 格式，可以使用 marked 渲染
 const renderedContent = marked.parse(contentPlainText);
+
+const pageTitle = title;
 ---
 
-<MarkdownPostLayout>
+<MarkdownArticleLayout pageTitle = {pageTitle}>
   
         <h1 class=" font-semibold text-2xl">{title}</h1>
         <!-- 封面图 -->
@@ -64,7 +65,7 @@ const renderedContent = marked.parse(contentPlainText);
     </div>
     
     <div class="my-5 text-gray-600 text-sm text-end" >创建时间: {new Date(article.created_time).toLocaleDateString()}</div>
-</MarkdownPostLayout>
+</MarkdownArticleLayout>
 
 <style>
 

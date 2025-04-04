@@ -1,18 +1,30 @@
 import axios from "axios";
-// 设定base url
 
-const liveUrl =
-  "https://momo-blog-test.netlify.app/.netlify/functions/notion-proxy/api";
-const devUrl = "http://localhost:4399/api";
+// 给不同环境配置不同的url
+const PRODUCTION_URL = "/.netlify/functions/notion-api";
+const DEV_URL = "http://localhost:4399/api";
 
-// 从Notion数据库获取文章
-const fetchArticles = async (url) => {
+// 根据当前环境来选择URL
+const getBaseUrl = () => {
+  if (import.meta.env.DEV) {
+    return DEV_URL;
+  } else {
+    return PRODUCTION_URL;
+  }
+};
+
+const fetchArticles = async (endpoint) => {
   try {
-    const res = await axios.get(devUrl + url);
-    const articles = res.data;
-    return articles;
-  } catch (err) {
-    console.log(err);
+    const baseUrl = getBaseUrl();
+
+    const url = `${baseUrl}${endpoint}`;
+    console.log(`Fetching from: ${url}`);
+
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 };
 
