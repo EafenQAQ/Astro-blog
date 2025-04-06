@@ -1,7 +1,8 @@
 <template>
     <div id="SearchBox" class="mb-10">
         <div>
-            <div id="search-container" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class=" flex flex-row-reverse">
+            <div id="search-container" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave"
+                class=" flex flex-row-reverse">
                 <!-- 搜索icon -->
                 <button class="hover:cursor-pointer p-2 rounded-full relative right-10 z-30">
 
@@ -18,9 +19,8 @@
 
                 <!-- 搜索框本体 -->
                 <input type="text" id="search-box"
-                 class="px-5 py-2 w-10 rounded-full outline-1 focus:boreder-blue-400 focus:rounded-xl focus:outline-blue-500 focus:shadow-2xl focus:shadow-blue-500/50 focus:w-50 transition-all ease-in-out duration-200" placeholder=""
-                 :class="{'w-50':showInputBox}"
-                 >
+                    class="px-5 py-2 w-10 rounded-full outline-1 focus:boreder-blue-400 focus:rounded-xl focus:outline-blue-500 focus:shadow-2xl focus:shadow-blue-500/50 focus:w-50 transition-all ease-in-out duration-200"
+                    placeholder="" :class="{ 'w-50': showInputBox }" v-model="searchText">
             </div>
         </div>
 
@@ -28,9 +28,18 @@
 </template>
 
 <script setup>
-import{ ref} from 'vue'
+import { onMounted, ref } from 'vue'
+
+defineProps({
+    allPosts: {
+        type: Array,
+        default: () => { },
+    }
+})
+
 
 const showInputBox = ref(false)
+const searchText = ref('')
 const handleMouseEnter = () => {
     showInputBox.value = true;
 }
@@ -46,5 +55,4 @@ const handleMouseLeave = () => {
     transition: all ease 0.2s;
 
 } */
-
 </style>

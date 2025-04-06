@@ -15,7 +15,7 @@ const filterTags = ['docker', 'CI/CD', 'test'];
 
 <div id="AllPosts" class="my-10 max-w-[90rem] w-full">
   <!-- SearchBox -->
-  <SearchBox client:load/>
+  <SearchBox allPosts={allPosts} client:load/>
 
   <!-- filter -->
   <div id="Postsfilter" class="ml-5 flex gap-4 items-center w-[80%]">
@@ -49,7 +49,7 @@ const filterTags = ['docker', 'CI/CD', 'test'];
   <ul id="postsList" class="grid grid-cols-2 grid-rows-3 gap-6 2xl:grid-cols-3 justify-items-center max-sm:grid-cols-1">
     {allPosts.map((post: any) => (
       <li class="post-item flex flex-col w-[80%] justify-between my-4 bg-gray-200/30 hover:bg-gray-300/30  
-      lg:size-110 lg:max-h-[25rem] transition-all duration-150 ease-in-out backdrop-blur-sm 
+      lg:size-110 lg:max-h-[25rem] backdrop-blur-sm 
       rounded-2xl p-5" data-tags={post.frontmatter.tags ? post.frontmatter.tags.join(',') : ''}>
         <a href={post.url} class="hover:cursor-pointer">
           <img
