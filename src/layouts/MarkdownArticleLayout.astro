@@ -9,7 +9,6 @@ import SideDrawer from '../components/SideDrawer.vue'
 import IntroCard from '../components/IntroCard.vue'
 import ScrolltoTop from '../components/ScrolltoTop.vue'
 import ShowPassageNavi from '../components/showPassageNavi.vue'
-import SideIndex from '../components/SideIndex.astro'
 
 let showPassageNavi = false;
 const togglePassageNavi = () => {
@@ -18,7 +17,7 @@ const togglePassageNavi = () => {
     showPassageNavi = !showPassageNavi
 }
 
-    const pageTitle = Astro.props.frontmatter.title 
+    const {pageTitle} = Astro.props
     
 
    
@@ -38,7 +37,7 @@ const togglePassageNavi = () => {
 
      <div class="flex justify-between">
         <div class="flex-1  max-2xl:hidden">
-            <SideIndex />
+            <SideProfile client:load/>
         </div>
          <div
          id="passageContent"

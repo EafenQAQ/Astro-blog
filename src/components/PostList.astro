@@ -2,12 +2,13 @@
 
 
 const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
-if (import.meta.env.DEV) {
-  console.log(allPosts);
-}
+
 
 const displayPosts = allPosts.slice(0, 4);
+
 ---
+
+
 
 <div id="postList" class="my-10 max-w-[90rem] w-full overflow-y-auto">
   
@@ -50,4 +51,7 @@ const displayPosts = allPosts.slice(0, 4);
 </div>
 
 
-
+<script>
+  console.log("展示中的文章", Astro.props);
+  
+</script>

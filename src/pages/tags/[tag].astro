@@ -1,16 +1,16 @@
 ---
+import Post from '../../components/Post.astro';
 import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
 
     const allPosts = Object.values(import.meta.glob('../posts/*.md', {eager: true}));
-
+    
     return [
     {params: {tag: "astro"}, props: {posts: allPosts}},
-    {params: {tag: "successes"}, props: {posts: allPosts}},
-    {params: {tag: "community"}, props: {posts: allPosts}},
-    {params: {tag: "blogging"}, props: {posts: allPosts}},
-    {params: {tag: "setbacks"}, props: {posts: allPosts}},
-    {params: {tag: "learning in public"}, props: {posts: allPosts}}
+    {params: {tag: "docker"}, props: {posts: allPosts}},
+    {params: {tag: "CI/CD"}, props: {posts: allPosts}},
+    {params: {tag: "test"}, props: {posts: allPosts}},
+   
   ];
 }
 
@@ -21,8 +21,12 @@ const filterPosts = posts.filter((post: any) => post.frontmatter.tags?.includes(
 
 ---
 <Layout pageTitle={tag}>
-  <p>包含「{tag}」标签的文章</p>
-  <ul>
-    {filterPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-  </ul>
+ 
+
+  <div class=" min-h-screen w-full flex flex-col items-center justify-center">
+    <p class="self-start">包含「{tag}」标签的文章</p>
+    <ul class=" max-w-[100rem] grid grid-cols-2 grid-rows-3 gap-6 2xl:grid-cols-3 justify-items-center max-sm:grid-cols-1 ">
+      {filterPosts.map((post: any) => <Post post={post} />)}
+    </ul>
+  </div>
 </Layout>

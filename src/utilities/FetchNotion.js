@@ -1,17 +1,30 @@
 import axios from "axios";
 
-// Base URLs for different environments
+// 给不同环境配置不同的url
 const PRODUCTION_URL = "/.netlify/functions/notion-api";
-const NETLIFY_DEV_URL = "http://localhost:8888/.netlify/functions/notion-api";
+const DEV_URL = "http://localhost:4399/api";
 
-// Determine the appropriate base URL based on environment
+// 根据当前环境来选择URL
 const getBaseUrl = () => {
   if (import.meta.env.DEV) {
-    // Local development with Netlify CLI
-    return NETLIFY_DEV_URL;
+    return DEV_URL;
   } else {
-    // Production/deployed environment
     return PRODUCTION_URL;
+  }
+};
+
+const fetchArticles = async (endpoint) => {
+  try {
+    const baseUrl = getBaseUrl();
+
+    const url = `${baseUrl}${endpoint}`;
+    console.log(`Fetching from: ${url}`);
+
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 };
 
