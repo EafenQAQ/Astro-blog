@@ -1,6 +1,6 @@
 <template>
-    <nav
-        class=" h-fit bg-white/0 backdrop-blur-md  max-w-sm mx-auto sticky top-10 flex-1 flex flex-col w-full rounded-3xl items-center py-4">
+    <nav class=" h-fit bg-white/30
+         backdrop-blur-md flex-1 flex flex-col w-full rounded-3xl items-center py-4">
         <!-- Profile Avatar -->
         <div class="mb-8">
             <img src="/assets/momo_head.jpg" alt="User Avatar"
@@ -27,6 +27,15 @@
             </a>
             <BottomIcon icon="rss" />
         </div>
+
+        <button @click="handleRotate" class="btn btn-ghost btn-circle">
+            <svg t="1743933536053" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="4742" width="32" height="32">
+                <path
+                    d="M421.12 590.506667L362.666667 648.533333a329.386667 329.386667 0 0 1 23.466666-409.173333 8.533333 8.533333 0 0 0-9.813333-13.226667 310.186667 310.186667 0 0 0-83.2 492.373334L241.92 768a17.066667 17.066667 0 0 0 11.946667 29.013333h179.2a17.066667 17.066667 0 0 0 17.066666-17.066666v-179.2a17.066667 17.066667 0 0 0-29.013333-10.24zM602.88 433.493333L661.333333 375.466667a329.386667 329.386667 0 0 1-21.333333 409.173333 8.533333 8.533333 0 0 0 9.813333 13.226667 310.186667 310.186667 0 0 0 81.066667-492.373334L782.08 256a17.066667 17.066667 0 0 0-11.946667-29.013333h-179.2a17.066667 17.066667 0 0 0-17.066666 17.066666v179.2a17.066667 17.066667 0 0 0 29.013333 10.24z"
+                    p-id="4743" fill="#4347b2"></path>
+            </svg>
+        </button>
     </nav>
 </template>
 
@@ -39,7 +48,7 @@ import {
     Tv,
     Rss
 } from 'lucide-vue-next'
-
+import anime from "animejs";
 // Components
 const NavItem = defineComponent({
     props: ['icon', 'label', 'active'],
@@ -100,6 +109,15 @@ const activeIndex = ref(0)
 const selectNavItem = (index) => {
     activeIndex.value = index
     // Add navigation logic here
+}
+
+//旋转卡片
+const handleRotate = () => {
+    anime({
+            targets: ".rotated-card",
+            rotateY: "+= 180",
+            duration: 500
+        })
 }
 </script>
 
