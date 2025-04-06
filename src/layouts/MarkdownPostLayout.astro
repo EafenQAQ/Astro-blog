@@ -4,12 +4,11 @@ import '../styles/global.css'
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import PassageNavi from '../components/PassageNavi.vue'
-import SideProfile from '../components/SideProfile.vue'
 import SideDrawer from '../components/SideDrawer.vue'
 import IntroCard from '../components/IntroCard.vue'
 import ScrolltoTop from '../components/ScrolltoTop.vue'
-import ShowPassageNavi from '../components/showPassageNavi.vue'
 import SideIndex from '../components/SideIndex.astro'
+import FooterIndex from '../components/FooterIndex.astro'
 
 let showPassageNavi = false;
 const togglePassageNavi = () => {
@@ -51,6 +50,10 @@ const togglePassageNavi = () => {
              <PassageNavi client:load />
           
      </div>
+        <div>
+            
+        </div>
+    <FooterIndex />
      <IntroCard client:load />
      <ScrolltoTop client:load />
      <Footer />

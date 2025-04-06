@@ -1,0 +1,45 @@
+---
+
+const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
+
+const displayPosts = allPosts.slice(0, 10);
+let showSideIndex = true;
+
+---
+
+<div id="FooterIndex" class=" mx-auto my-8 max-w-[45rem] bg-white/30 p-8 rounded-2xl backdrop-blur-sm">
+    <div class="rotated-card">
+        <div class="front-card flex w-[90%] p-5 flex-col h-fit mx-5 min-h-[20rem] gap-2 text-3xl font-bold my-5 ml-5 rounded-2xl">
+            <div class="flex gap-2 text-base-content/60 items-center">
+                <span>
+                    <svg t="1743928906714" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2354" width="32" height="32"><path d="M489.8 555.6c-15.6 0-29.3-13.7-29.3-29.3V271.1c0-15.6 13.7-29.3 29.3-29.3s29.3 13.7 29.3 29.3v225.8H672c15.6 0 29.3 13.7 29.3 29.3 0 15.6-13.7 29.3-29.3 29.3H489.8z" fill="#999999" p-id="2355"></path><path d="M508 920c-131.5 0-256-63.7-333.3-170.3-9.9-13.9-7.4-31.6 5.9-41.1 5.6-4 11.9-6.1 18.2-6.1 9.1 0 17.4 4.4 22.8 12 66.7 91.9 173.7 146.8 286.3 146.8 194.8 0 353.3-158.5 353.3-353.3S702.7 154.7 507.9 154.7c-174.1 0-323.4 128-349.1 298.4l42-25.2h0.1c5.1-2.6 10.7-3.9 16.1-3.9 10.6 0 19.8 5.2 24.8 13.8l0.1 0.1c7.8 15.6 3.6 33.2-9.9 40.9l-91.1 54.6c-4.9 2.9-9.8 4.4-14.7 4.4s-9.8-1.5-14.7-4.4C102 527.6 96 517.9 96 508 96 280.8 280.8 96 508 96s412 184.8 412 412-184.8 412-412 412z" fill="#999999" p-id="2356"></path></svg>
+                </span>
+                <span>往期内容</span>
+        
+                <span class=" self-end ml-auto">
+                    
+                </span>
+            </div>
+            <div class="mt-5" >
+                <ul>
+                   {displayPosts.map(post =>
+                    <li class="text-xl pl-1 my-0.5 py-1 mx-2 w-full
+                      font-light
+                    hover:bg-gray-200/30 rounded-md"><a href={post.url}>{post.frontmatter.title}</a></li>
+                   )}
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="flex flex-1 justify-end">
+        <a href="/posts" class="flex items-center gap-1 px-4 py-2 hover:cursor-pointer self-end bg-white/0 border-none text-sm hover:backdrop-blur-sm rounded-3xl hover:bg-gray-300/30">Read More
+        <span>
+          <svg t="1743312005051" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3440" width="16" height="16"><path d="M514 912c-219.9 0-398.8-178.9-398.8-398.9 0-219.9 178.9-398.8 398.8-398.8s398.8 178.9 398.8 398.8c0 220-178.9 398.9-398.8 398.9z m0-701.5c-166.9 0-302.7 135.8-302.7 302.7S347.1 815.9 514 815.9s302.7-135.8 302.7-302.7S680.9 210.5 514 210.5z" fill="#13227a" p-id="3441"></path><path d="M402.5 677.3c0-15 5.7-30.1 17.2-41.5l122.6-122.6-122.6-122.6c-22.9-22.9-22.9-60.2 0-83.1 22.9-22.9 60.2-22.9 83.1 0l164.1 164.1c22.9 22.9 22.9 60.2 0 83.1L502.8 718.8c-22.9 22.9-60.2 22.9-83.1 0-11.5-11.4-17.2-26.5-17.2-41.5z" fill="#13227a" p-id="3442"></path></svg>
+        </span>
+        </a>
+    
+      </div>
+</div>
+
+
