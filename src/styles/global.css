@@ -25,17 +25,14 @@ body {
   background-position: center;
 }
 
-[data-theme="synthwave"] {
-  background-image: url(/assets/backdrop_dark.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-
 /* 在小屏幕上自动把字体缩小 */
 @media screen and (max-width: 768px) {
   body {
     font-size: 14px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
   }
 }
