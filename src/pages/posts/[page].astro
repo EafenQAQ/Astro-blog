@@ -2,9 +2,17 @@
 import AllPosts from '../../components/AllPosts.vue';
 import Layout from '../../layouts/Layout.astro';
 
+
 const pageTitle = "文章列表"
 
 const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+
+export function getStaticPaths({paginate}) {
+    return paginate(allPosts, { pageSize: 2 })
+}
+
+const {page} = Astro.props;
+
 ---
 
 <Layout pageTitle={pageTitle}>

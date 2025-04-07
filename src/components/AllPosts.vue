@@ -87,6 +87,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import SearchBox from './Search/SearchBox.vue'
 
 defineProps({
@@ -96,6 +97,11 @@ defineProps({
         default: () => []
     },
 
+})
+
+onMounted(() => {
+    console.log(allPosts);
+    
 })
 
 
