@@ -1,0 +1,19 @@
+---
+import SearchResult from "../components/Search/SearchResult.vue";
+import Layout from "../layouts/Layout.astro";
+
+const searchContent = Astro.url.searchParams.get("s");
+
+const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
+
+//根据搜索结果过滤文章
+const searchResults = allPosts.filter((post: any) => {
+    return post.frontmatter.title.includes(searchContent);
+})
+---
+
+<Layout pageTitle={`搜索:${searchContent}`}>
+    <div id="Search" class=" h-screen">
+        <SearchResult client:load searchContent={searchContent} searchResults={searchResults} />
+    </div>
+</Layout>

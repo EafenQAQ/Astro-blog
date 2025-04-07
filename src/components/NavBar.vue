@@ -19,6 +19,9 @@
           <li><a href="/posts">Posts</a></li>
         </ul>
       </div>
+
+      <!-- 搜索图标 -->
+      <SearchModal />
       <!-- 主题切换按钮 -->
       <label class="swap swap-rotate">
         <input v-model="currentChecked" @change="toggleTheme" type="checkbox" class="theme-controller"
@@ -39,6 +42,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { toggleTheme } from '../utilities/ToggleTheme';
+import SearchModal from './Search/SearchModal.vue';
 
 
 // 初始化主题
@@ -46,7 +50,7 @@ const currentChecked = ref('')
 const initTheme = () => {
   let currentTheme = localStorage.getItem("userTheme");
   if (currentTheme) {
-    
+
     if (currentTheme === "synthwave") {
       currentChecked.value = true;
     }

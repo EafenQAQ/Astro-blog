@@ -16,13 +16,13 @@ export async function getStaticPaths() {
       props: { article },
     }));
   } catch (error) {
-    console.error('Error fetching articles:', error);
+    console.error('getStaticPaths of articles falied', error);
     return [];
   }
 }
 
 const { article } = Astro.props;
-
+const {id} = Astro.params;
 // if (!article) {
 //   return (
 //     <Layout title="文章未找到">

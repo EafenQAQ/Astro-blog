@@ -1,10 +1,10 @@
 <template>
     <div id="SearchBox" class="mb-10">
         <div>
-            <div id="search-container" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave"
-                class=" flex flex-row-reverse">
+            <form action="/search" method="get" id="search-container" @mouseenter="handleMouseEnter"
+                @mouseleave="handleMouseLeave" class=" flex flex-row-reverse">
                 <!-- 搜索icon -->
-                <button class="hover:cursor-pointer p-2 rounded-full relative right-10 z-30">
+                <button type="submit" class="hover:cursor-pointer p-2 rounded-full relative right-10 z-30">
 
                     <svg t="1743943079526" class="icon" viewBox="0 0 1024 1024" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" p-id="9424" width="25" height="25">
@@ -18,10 +18,11 @@
                 </button>
 
                 <!-- 搜索框本体 -->
-                <input type="text" id="search-box"
-                    class="px-5 py-2 w-10 rounded-full outline-1 focus:boreder-blue-400 focus:rounded-xl focus:outline-blue-500 focus:shadow-2xl focus:shadow-blue-500/50 focus:w-50 transition-all ease-in-out duration-200"
+                <input name="s" type="text" id="search-box" class="px-5 py-2 w-10  
+                     focus:outline-none border rounded-full focus:ring-2 focus:ring-blue-500
+                    focus:shadow-2xl  focus:shadow-blue-500/50 focus:w-50 transition-all ease duration-300"
                     placeholder="" :class="{ 'w-50': showInputBox }" v-model="searchText">
-            </div>
+            </form>
         </div>
 
     </div>

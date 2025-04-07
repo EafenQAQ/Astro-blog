@@ -1,5 +1,5 @@
 ---
-import SearchBox from "./SearchBox.vue";
+import SearchBox from './Search/SearchBox.vue'
 
 const allPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
 if (import.meta.env.DEV) {
@@ -15,7 +15,7 @@ const filterTags = ['docker', 'CI/CD', 'test'];
 
 <div id="AllPosts" class="my-10 max-w-[90rem] w-full">
   <!-- SearchBox -->
-  <SearchBox allPosts={allPosts} client:load/>
+  <SearchBox client:load/>
 
   <!-- filter -->
   <div id="Postsfilter" class="ml-5 flex gap-4 items-center w-[80%]">
