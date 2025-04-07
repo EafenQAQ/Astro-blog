@@ -1,8 +1,10 @@
 ---
-import AllPosts from '../../components/AllPosts.astro';
+import AllPosts from '../../components/AllPosts.vue';
 import Layout from '../../layouts/Layout.astro';
 
 const pageTitle = "文章列表"
+
+const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
 ---
 
 <Layout pageTitle={pageTitle}>
@@ -10,7 +12,7 @@ const pageTitle = "文章列表"
     <div id="AllPosts" class="flex flex-col items-center w-full">
         
 
-            <AllPosts />
+            <AllPosts client:load allPosts={allPosts} />
 
        
     </div>
