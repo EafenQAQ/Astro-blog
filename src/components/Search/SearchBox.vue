@@ -4,7 +4,7 @@
             <form action="/search" method="get" id="search-container" @mouseenter="handleMouseEnter"
                 @mouseleave="handleMouseLeave" class=" flex flex-row-reverse">
                 <!-- 搜索icon -->
-                <button type="submit" class="hover:cursor-pointer p-2 rounded-full relative right-10 z-30">
+                <button type="button" class=" p-2 rounded-full relative right-10 z-30">
 
                     <svg t="1743943079526" class="icon" viewBox="0 0 1024 1024" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" p-id="9424" width="25" height="25">

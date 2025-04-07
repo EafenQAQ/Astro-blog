@@ -27,6 +27,8 @@
         <div class="flex-1">
             <h2 class=" font-semibold">Momo</h2>
         </div>
+        <!-- 搜索图标 -->
+         <SearchModal />
         <label class="swap swap-rotate mx-4">
             <input @change="toggleTheme" type="checkbox" class="theme-controller" value="synthwave" />
             <svg class="swap-off h-7 w-7 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -43,6 +45,7 @@
 
 <script setup>
 import {toggleTheme} from '../utilities/ToggleTheme';
+import SearchModal from './Search/SearchModal.vue';
 
 </script>
 
