@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/pages/posts/post-1.md",
+                "file": "src/pages/posts/post-6.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "post-1"
+              "title": "post-6"
             }
           }
         ]
@@ -170,16 +170,24 @@
   },
   "active": "3d8004ead91cc40d",
   "lastOpenFiles": [
-    "src/components/Social.vue",
+    "src/pages/posts/post-1.md",
+    "src/utilities/FetchNotion.js",
+    "src/pages/articles/index.astro",
+    "src/pages/articles/[id].astro",
+    "src/pages/articles",
+    "src/components/RSSPassageListPre.vue",
+    "src/components/RSSPassageList.vue",
+    "src/components/FeedlyReader.vue",
+    "public/assets/Agif.gif",
+    "netlify/functions/notion-api.js",
+    "netlify/functions",
+    "netlify",
     "public/assets/postThumbs/CI-CDgithub.png",
     "public/assets/postThumbs/CI-CDdockerfile.png",
-    "src/components/showPassageNavi.vue",
-    "src/components/ScrolltoTop.vue",
     "public/assets/postThumbs/cmake-build.png",
     "public/assets/postThumbs/env.png",
     "public/assets/postThumbs/dockerenv.png",
     "src/pages/posts/post-2.md",
-    "src/pages/posts/post-1.md",
     "src/pages/posts/post-0.md",
     "src/pages/posts/post-5.md",
     "src/pages/posts/post-6.md",
