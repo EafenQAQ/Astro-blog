@@ -9,11 +9,6 @@ const toggleTheme = (e) => {
   localStorage.setItem("userTheme", newTheme);
 };
 
-// // 根据主题切换背景图片
-// if (newTheme === "synthwave") {
-//   body.style.backgroundImage = "url('/assets/backdrop_dark.svg')";
-// } else {
-//   body.style.backgroundImage = "url('/assets/backdrop.svg')";
-// }
+
 
 export { toggleTheme };

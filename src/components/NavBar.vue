@@ -41,25 +41,36 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { toggleTheme } from '../utilities/ToggleTheme';
 import SearchModal from './Search/SearchModal.vue';
 
+const currentTheme = ref('default');
 
-// 初始化主题
-const currentChecked = ref('')
-const initTheme = () => {
-  let currentTheme = localStorage.getItem("userTheme");
-  if (currentTheme) {
-
-    if (currentTheme === "synthwave") {
-      currentChecked.value = true;
-    }
-  }
-}
 onMounted(() => {
-  initTheme();
+  currentTheme.value = localStorage.getItem('theme') || 'default';
 }
 )
+
+const toggleTheme = () => {
+  const newTheme = currentTheme.value === 'default' ? 'synthwave' : 'default';
+  currentTheme.value = newTheme;
+  localStorage.setItem('theme', newTheme);
+}
+
+// 初始化主题
+// const currentChecked = ref('')
+// const initTheme = () => {
+//   let currentTheme = localStorage.getItem("userTheme");
+//   if (currentTheme) {
+
+//     if (currentTheme === "synthwave") {
+//       currentChecked.value = true;
+//     }
+//   }
+// }
+// onMounted(() => {
+//   initTheme();
+// }
+// )
 // 控制导航栏显示状态
 const isVisible = ref(true);
 

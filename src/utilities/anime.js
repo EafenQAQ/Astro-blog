@@ -4,7 +4,7 @@ export const renderingAnime = () => {
   anime({
     targets: ".renderIn",
     easing: "easeInOutExpo",
-    translateY: [10, 0],
+    translateY: [15, 0],
     duration: 1500,
     opacity: [0, 1],
     begin: function (anim) {
