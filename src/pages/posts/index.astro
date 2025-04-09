@@ -5,7 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 
 const pageTitle = "文章列表"
 
-const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+const allPosts = Object.values(import.meta.glob('../posts/*.{md,mdx}', { eager: true }));
 
 export function getStaticPaths({paginate}) {
     return paginate(allPosts, { pageSize: 2 })

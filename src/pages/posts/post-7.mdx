@@ -1,14 +1,13 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "容器化开发环境搭建"
+title: "MDX示例"
 pubDate: 2025-03-28
 description: "这是一个一个一个容器化开发环境搭建教程！"
 author: "Momo"
 image:
-  url: "/assets/postThumbs/env.png"
+  url:
   alt: "img1"
 tags: ["docker"]
-
 ---
 
 # 容器化开发环境搭建
@@ -65,27 +64,29 @@ tags: ["docker"]
   docker run --name mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
   ```
 
-  没错，你已经起了一个密码是123456的mysql容器了，怎么样，docker很神奇吧！
+  没错，你已经起了一个密码是 123456 的 mysql 容器了，怎么样，docker 很神奇吧！
+
 - **易保存、迁移**
   - 可以打包成 `.tar` 文件到处传播。
-  - 可以打上标签上传到 Docker Hub到处传播。
+  - 可以打上标签上传到 Docker Hub 到处传播。
   - 可以使用 `Dockerfile` 进行镜像优化然后到处传播。
 
 ### 对比其他方案
 
 - **虚拟机**：太重，启动慢，文件互通需要 VMware Tools 支持，网络配置复杂(我不明白~)
 - **WSL**：对 GUI 支持差，环境隔离性不佳。
->那么这么好用的工具，去哪里下载呢？度娘和谷爹会告诉你一切。
-		 那么这么好用的工具，具体来说怎么用呢？很多人做过相关的教程，b站会告诉你一切。
-		 本文只会涉及一些有难度的用法。
-     比如，网络问题:`我缺的dockerhub这块谁给我补啊`
+  > 那么这么好用的工具，去哪里下载呢？度娘和谷爹会告诉你一切。
+      	 那么这么好用的工具，具体来说怎么用呢？很多人做过相关的教程，b站会告诉你一切。
+      	 本文只会涉及一些有难度的用法。
+       比如，网络问题:`我缺的dockerhub这块谁给我补啊`
+
 ### 网络问题解决方案
 
 - **方案一：镜像源加速**
 - **方案二：魔法网络**（Windows Docker Desktop 默认支持）
 
 如果魔法不生效，尝试 **TUN 模式**.简单来说，大部分软件默认是不走代理的（没想到吧！也就浏览器会走走代理），是否使用系统代理，这是软件自己决定的。我们可以通过一些软件的设置让它使用代理，或者是---强制爱。
-			TUN会模拟出一张虚拟网卡，所有流量都会经过这张网卡，愿不愿意，可由不得你了
+TUN 会模拟出一张虚拟网卡，所有流量都会经过这张网卡，愿不愿意，可由不得你了
 
 ---
 
@@ -99,7 +100,7 @@ tags: ["docker"]
 
 > ![Docker 配置](../../../public/assets/illusts/post-1/1.png)
 
-启用后，Docker Server 会在 `127.0.0.1:2375` 暴露一个无 TLS 加密的端口。这样，只要能够让别的机器访问到windows的localhost:2375就可以使用docker服务了。这种事情，真的做的到吗？
+启用后，Docker Server 会在 `127.0.0.1:2375` 暴露一个无 TLS 加密的端口。这样，只要能够让别的机器访问到 windows 的 localhost:2375 就可以使用 docker 服务了。这种事情，真的做的到吗？
 
 **如何远程访问？**
 
@@ -150,10 +151,10 @@ docker run --name ubuntu_dev -itd ubuntu:22.04
 
 > ![](../../../public/assets/illusts/post-1/2.png)
 
->然后，呼出命令行，你可以像在本地使用Linux一样使用这个容器了。
-你的代码会保存在容器里，会使用容器里的编译器编译。
-关于C++容器里的环境的搭建和推荐的容器会在后面说，熟悉的同学可以自己开始动手了。
----
+> 然后，呼出命令行，你可以像在本地使用 Linux 一样使用这个容器了。
+> 你的代码会保存在容器里，会使用容器里的编译器编译。
+
+## 关于 C++容器里的环境的搭建和推荐的容器会在后面说，熟悉的同学可以自己开始动手了。
 
 ## Neovim 适配 VSCode
 
@@ -173,3 +174,19 @@ docker run --name ubuntu_dev -itd ubuntu:22.04
 
 恭喜你，现在你已经拥有了一套 **分布式、前后端分离** 的开发环境！
 
+
+
+import Quiz from "../../components/Quiz.vue";
+
+<Quiz client:idle
+  title="问题 1 Docker的好处是什么？"
+  quizId="q1"
+  options={[
+    { label: "1145141919810！", value: "option1" },
+    { label: "一次配置，到处运行！", value: "option2" },
+    { label: "没有好处", value: "option3" },
+    { label: "是一个一个一个好的docker！", value: "option4" },
+  ]}
+  correctAnswer="option2">
+
+</Quiz>
