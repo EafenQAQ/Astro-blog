@@ -7,7 +7,7 @@ const pageTitle = "关于"
 ---
 
     <Layout pageTitle = {pageTitle}>
-        <div id="aboutPage" class="h-fit max-w-[80rem] rounded-2xl mx-auto bg-white/60 backdrop-blur-sm flex flex-col-reverse gap-10 justify-center">
+        <div id="aboutPage" class="renderIn h-fit max-w-[80rem] rounded-2xl mx-auto bg-white/60 backdrop-blur-sm flex flex-col-reverse gap-10 justify-center">
 
             <div>
                 <h1>C++ 全栈聊天项目二次开发</h1>
@@ -44,7 +44,8 @@ const pageTitle = "关于"
     </Layout>
     
 <script>
-    
+    import { renderingAnime } from "../utilities/anime";
+    renderingAnime();
     
 </script>
     <style scoped>

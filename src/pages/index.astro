@@ -12,11 +12,11 @@ const pageTitle = "Momo's Blog"
 
 <Layout pageTitle={pageTitle}>
 
-	<div id="narrowContainer" class="flex flex-col items-center justify-center w-full max-w-[50rem] mx-auto ">
-		<Profile client:only />
-		<div class="flex flex-col flex-1 justify-center items-center">
+	<div id="narrowContainer" class="renderIn beforeRenderIn flex flex-col items-center justify-center w-full max-w-[50rem] mx-auto ">
+			<Profile client:load />
+		<div class="flex flex-col flex-1 w-full justify-center items-center">
 			<Hero client:load />
-			<PostList />
+			<PostList client:load />
 
 			<img class=" rounded-3xl" src="/assets/Agif.gif" alt="">
 			<RSSPassageListPre client:load />
@@ -24,3 +24,9 @@ const pageTitle = "Momo's Blog"
 	</div>
 	
 </Layout>
+
+<script>
+	import { renderingAnime } from "../utilities/anime";
+
+	window.onload = renderingAnime
+</script>

@@ -100,7 +100,7 @@ defineProps({
 })
 
 onMounted(() => {
-    console.log(allPosts);
+    console.log("获取的文章：", allPosts);
     
 })
 
