@@ -55,14 +55,11 @@ const togglePassageNavi = () => {
      <Footer />
      
 
-     <script>
-        const currentTheme = localStorage.getItem("userTheme")
-        if (currentTheme) {
-            let body = document.body
-            body.setAttribute("data-theme", currentTheme);
-
-        }
-    </script>
+   
+    <script is:inline>
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+   </script>
 
      <!-- Put this part before </body> tag -->
 		 <input type="checkbox" id="my_modal_7" class="modal-toggle" />
