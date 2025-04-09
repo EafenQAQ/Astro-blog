@@ -37,18 +37,15 @@ const {pageTitle} = Astro.props
 
 			window.onload = renderingAnime
 
-			// const currentTheme = localStorage.getItem("userTheme")
-			// if (currentTheme) {
-			// 	let body = document.body
-			// 	body.setAttribute("data-theme", currentTheme);
-
-			// }
+			 // 在页面加载时立即初始化主题，避免闪烁
+			 document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.documentElement.classList.add('theme-transition');
+      });
 		</script>
 
-		<script is:inline>
-			 const savedTheme = localStorage.getItem('theme') || 'default';
-			 document.documentElement.setAttribute('data-theme', savedTheme);
-		</script>
+		
 		
 		 <!-- Put this part before </body> tag -->
 		 <input type="checkbox" id="my_modal_7" class="modal-toggle" />

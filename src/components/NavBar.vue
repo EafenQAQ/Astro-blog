@@ -24,7 +24,7 @@
       <SearchModal />
       <!-- 主题切换按钮 -->
       <label class="swap swap-rotate">
-        <input v-model="currentChecked" @change="toggleTheme" type="checkbox" class="theme-controller"
+        <input v-model="isDark"  type="checkbox" class="theme-controller"
           value="synthwave" />
         <svg class="swap-off h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
@@ -42,42 +42,15 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import SearchModal from './Search/SearchModal.vue';
+import { useTheme } from '../composables/useTheme';
 
-const currentTheme = ref('default');
-const currentChecked = ref(false)
 
-onMounted(() => {
-  currentTheme.value = localStorage.getItem('theme') || 'default';
-  currentChecked.value = currentTheme.value === 'synthwave';
-}
-)
-
-const toggleTheme = () => {
-  const newTheme = currentChecked.value ? 'synthwave' : 'default';
-  currentTheme.value = newTheme;
-  localStorage.setItem('theme', newTheme);
-  document.documentElement.setAttribute('data-theme', newTheme);
-  document.documentElement.classList.add('theme-transition');
+const { theme, isDark, toggleTheme } = useTheme();
 
 
 
-}
 
-// 初始化主题
-// const currentChecked = ref('')
-// const initTheme = () => {
-//   let currentTheme = localStorage.getItem("userTheme");
-//   if (currentTheme) {
 
-//     if (currentTheme === "synthwave") {
-//       currentChecked.value = true;
-//     }
-//   }
-// }
-// onMounted(() => {
-//   initTheme();
-// }
-// )
 // 控制导航栏显示状态
 const isVisible = ref(true);
 
