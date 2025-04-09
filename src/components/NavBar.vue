@@ -44,16 +44,23 @@ import { onMounted, ref } from 'vue';
 import SearchModal from './Search/SearchModal.vue';
 
 const currentTheme = ref('default');
+const currentChecked = ref(false)
 
 onMounted(() => {
   currentTheme.value = localStorage.getItem('theme') || 'default';
+  currentChecked.value = currentTheme.value === 'synthwave';
 }
 )
 
 const toggleTheme = () => {
-  const newTheme = currentTheme.value === 'default' ? 'synthwave' : 'default';
+  const newTheme = currentChecked.value ? 'synthwave' : 'default';
   currentTheme.value = newTheme;
   localStorage.setItem('theme', newTheme);
+  document.documentElement.setAttribute('data-theme', newTheme);
+  document.documentElement.classList.add('theme-transition');
+
+
+
 }
 
 // 初始化主题
