@@ -122,6 +122,14 @@ const updateCurrentTime = () => {
     minutes.value = currentTime.getMinutes();
     seconds.value = currentTime.getSeconds();
 
+};
+
+const updateGreeting = () => {
+    const currentTime = new Date();
+    hours.value = currentTime.getHours();
+    minutes.value = currentTime.getMinutes();
+    seconds.value = currentTime.getSeconds();
+
     // 确定当前时间段
     if (hours.value >= 5 && hours.value < 12) {
         timeOfDay.value = 'morning';
@@ -132,20 +140,38 @@ const updateCurrentTime = () => {
     } else {
         timeOfDay.value = 'night';
     }
-};
+}
+
 
 let timer = null;
 
+// 定义visibilitychange的回调函数
+
+const handleVisibilityChange = () => {
+    if (document.hidden) {
+        clearInterval(timer);
+    } else {
+        updateGreeting();
+        timer = setInterval(updateCurrentTime, 1000);
+    }
+}
+
 // 初始化
 onMounted(() => {
-    updateCurrentTime();
-    // 每秒更新一次时间
+
+    updateGreeting();
+
     timer = setInterval(updateCurrentTime, 1000);
+
+
+    // 当页面不可见时
+    document.addEventListener('visibilitychange', handleVisibilityChange)
 });
 
 // 卸载时清除定时器
 onUnmounted(() => {
     clearInterval(timer);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
 </script>
 

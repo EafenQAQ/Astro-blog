@@ -82,7 +82,7 @@
             </li>
         </ul>
 
-
+        <button class="btn btn-primary" @click="forTest">测试用</button>
     </div>
 </template>
 
@@ -90,7 +90,7 @@
 import { onMounted } from 'vue';
 import SearchBox from './Search/SearchBox.vue'
 
-defineProps({
+const props = defineProps({
     allPosts: {
         type: Array,
         required: true,
@@ -99,10 +99,10 @@ defineProps({
 
 })
 
-onMounted(() => {
-    console.log("获取的文章：", allPosts);
-    
-})
+
+const forTest = () => {
+     console.table(props.allPosts)
+}
 
 
 </script>
