@@ -1,4 +1,5 @@
-# Astro Starter Kit: Basics
+# Momo-blog
+- 一款用Astro搭建的个人博客
 
 ```sh
 npm create astro@latest -- --template basics
