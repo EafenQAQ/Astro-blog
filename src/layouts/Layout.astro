@@ -16,6 +16,24 @@ const {pageTitle} = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/assets/momo_head.jpg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+
+		<script is:inline>
+			
+			(function() {
+			  try {
+				
+				const persistedTheme = localStorage.getItem('theme') || 'default';
+		
+			
+				document.documentElement.setAttribute('data-theme', persistedTheme);
+		
+		
+			  } catch (e) {
+			
+				console.warn('Failed to apply persisted theme:', e);
+			  }
+			})();
+		  </script>
 	</head>
 	<body>
 		

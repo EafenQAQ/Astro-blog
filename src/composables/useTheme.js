@@ -1,47 +1,49 @@
-
-import { ref, onMounted, watch } from 'vue';
+// composables/useTheme.js (修订版)
+import { ref, onMounted, computed } from "vue";
 
 export function useTheme() {
-  const theme = ref('default');
-  const isDark = ref(false);
+  const theme = ref("default");
 
-  // 应用主题到dom
   const applyTheme = (newTheme) => {
-    document.documentElement.setAttribute('data-theme', newTheme);
-    document.documentElement.classList.add('theme-transition');
+    console.log("Applying theme:", newTheme); // 添加日志，方便调试
+    try {
+      document.documentElement.setAttribute("data-theme", newTheme);
+    } catch (e) {
+      console.error("Failed to set data-theme attribute:", e);
+    }
   };
 
-  // 初始化主题
   const initTheme = () => {
-    // 从localStorage获取保存的主题，如果没有则使用默认主题
-    const savedTheme = localStorage.getItem('theme') || 'default';
-    theme.value = savedTheme;
-    isDark.value = savedTheme === 'synthwave';
-    applyTheme(savedTheme);
+    const savedTheme = localStorage.getItem("theme") || "default";
+    if (theme.value !== savedTheme) {
+      theme.value = savedTheme;
+    }
+    // 确保 DOM 与 ref 一致（即使内联脚本已设置）
+    applyTheme(theme.value);
   };
 
-  // 切换主题
   const toggleTheme = () => {
-    theme.value = isDark.value ? 'synthwave' : 'default';
-    localStorage.setItem('theme', theme.value);
-    applyTheme(theme.value);
+    const newTheme = theme.value === "default" ? "synthwave" : "default";
+    theme.value = newTheme;
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
   };
 
-  // 监听isDark的变化并切换主题
-  watch(isDark, () => {
-    theme.value = isDark.value ? 'synthwave' : 'default';
-    localStorage.setItem('theme', theme.value);
-    applyTheme(theme.value);
-  });
+  const isDark = computed(() => theme.value === "synthwave");
 
-  // 组件挂载时初始化主题
   onMounted(() => {
     initTheme();
+    // 可选: 添加 storage 事件监听器
+    window.addEventListener("storage", (event) => {
+      if (event.key === "theme") {
+        const newTheme = event.newValue || "default";
+        if (theme.value !== newTheme) {
+          theme.value = newTheme;
+          applyTheme(newTheme);
+        }
+      }
+    });
   });
 
-  return {
-    theme,
-    isDark,
-    toggleTheme
-  };
+  return { theme, isDark, toggleTheme };
 }
