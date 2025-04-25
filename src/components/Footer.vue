@@ -13,6 +13,8 @@
         &nbsp;&nbsp;&nbsp; ——献给热爱技术的你
       </p>
 
+
+
       <p class="mt-5">
         联系我: 467301127@qq.com
       </p>
@@ -21,6 +23,11 @@
     <div>
       <p class=" font-semibold">Social</p>
       <Social />
+    </div>
+    <div class=" w-full flex justify-center">
+      <a href="https://beian.miit.gov.cn" target="_blank">
+        备案号: 皖ICP备2025083432号-1
+      </a>
     </div>
   </footer>
 </template>
