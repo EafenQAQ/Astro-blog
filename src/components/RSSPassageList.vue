@@ -29,7 +29,7 @@
                             :src="article.properties['Image URL'].url" alt="封面图" />
                         <div class="flex flex-col gap-2">
                             <h2 class="text-xl max-sm:text-xl font-semibold max-sm:pb-5">{{
-                                article.properties.Name.title[0].plain_text }}</h2>
+                                article.properties.title.title[0].plain_text }}</h2>
                             <p class=" text-sm text-base-content/80">
                                 {{ article.properties.content.rich_text[0].plain_text.slice(0, 40) + '...' }}
                             </p>

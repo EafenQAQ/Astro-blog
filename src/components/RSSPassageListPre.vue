@@ -27,7 +27,7 @@
                           max-sm:w-[90%] max-sm:items-center
                           max-sm:px-5 max-sm:pb-5 gap-1 items-start justify-center">
                             <h2 class="text-xl font-semibold max-sm:pb-2">{{
-                                article.properties.Name.title[0].plain_text }}</h2>
+                                article.properties.title.title[0].plain_text }}</h2>
                             <p class=" text-sm text-base-content/80">
                                 {{ article.properties.content.rich_text[0].plain_text.slice(0, 100) + '...' }}
                             </p>
