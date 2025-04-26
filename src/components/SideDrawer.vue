@@ -47,10 +47,10 @@
 import SearchModal from './Search/SearchModal.vue';
 import {ref, onMounted} from 'vue';
 
-import { useTheme } from '../composables/useTheme';
 
 
-const { theme, isDark, toggleTheme } = useTheme();
+
+
 
 
 

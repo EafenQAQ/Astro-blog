@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: all;
+  themes: light --default, dark --synthwave;
+  root: ":root";
+  logs: true;
 }
 @plugin "daisyui/theme" {
   name: "synthwave";
