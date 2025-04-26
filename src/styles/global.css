@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --synthwave;
+  themes:
+    light --default,
+    synthwave --prefersdark;
   root: ":root";
   logs: true;
 }
@@ -14,13 +16,13 @@
   z-index: 40;
 }
 
-.theme-transition {
-  transition: background-color 0.4s ease, color 0.5s ease,
-    background-image 0.3s ease-in-out;
-}
 :root {
   scrollbar-width: thin;
   scrollbar-color: #91c8f6 #ffffff;
+  transition:
+    background-color 0.4s ease,
+    color 0.5s ease,
+    background-image 0.3s ease-in-out;
 }
 
 body {
@@ -29,7 +31,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  scrollbar-width: ;
+  scrollbar-width:;
 }
 
 /* 在小屏幕上自动把字体缩小 */

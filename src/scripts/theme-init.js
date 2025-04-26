@@ -6,7 +6,7 @@ const theme = (() => {
     }
     // 2. Check system preference
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'; // Or your preferred default dark theme
+      return 'synthwave'; // Or your preferred default dark theme
     }
     // 3. Default theme
     return 'light'; // Or your preferred default light theme
