@@ -17,23 +17,7 @@ const {pageTitle} = Astro.props
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 
-		<script is:inline>
-			
-			(function() {
-			  try {
-				
-				const persistedTheme = localStorage.getItem('theme') || 'default';
 		
-			
-				document.documentElement.setAttribute('data-theme', persistedTheme);
-		
-		
-			  } catch (e) {
-			
-				console.warn('Failed to apply persisted theme:', e);
-			  }
-			})();
-		  </script>
 	</head>
 	<body>
 		
@@ -55,12 +39,7 @@ const {pageTitle} = Astro.props
 
 			window.onload = renderingAnime
 
-			 // 在页面加载时立即初始化主题，避免闪烁
-			 document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'default';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.documentElement.classList.add('theme-transition');
-      });
+		
 		</script>
 
 		
