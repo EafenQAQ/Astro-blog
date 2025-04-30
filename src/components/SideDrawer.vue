@@ -1,6 +1,6 @@
 <template>
     <div id="SideDrawer"
-        class="drawer flex justify-between items-center sm:hidden rounded-xl bg-white/30 backdrop-blur-sm sticky top-0">
+        class="drawer flex justify-between items-center sm:hidden rounded-xl bg-white/30 backdrop-blur-sm sticky top-0 z-50">
 
         <input id="my-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content">
@@ -14,7 +14,7 @@
             </label>
         </div>
         <!-- 侧面菜单栏 -->
-        <div class="drawer-side z-50">
+        <div class="drawer-side">
             <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
             <ul class="menu bg-base-200 text-base-content min-h-full w-60 p-4">
                 <!-- Sidebar content here -->
