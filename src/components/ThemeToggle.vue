@@ -20,11 +20,7 @@ import { ref, onMounted, watch } from 'vue';
 
 
 
-// 初始化checkbox状态
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme');
-  isDark.value = savedTheme === DARK_THEME;
-})
+
 // --- Configuration ---
 // Define the names of your light and dark themes.
 // These MUST match the themes defined in your tailwind.config.js
@@ -38,6 +34,12 @@ const DARK_THEME = 'synthwave';   // Or 'night', 'synthwave', etc.
 // true = dark theme, false = light theme.
 const isDark = ref(false);
 
+
+// 初始化checkbox状态
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme');
+  isDark.value = savedTheme === DARK_THEME;
+})
 // Function to apply the theme to the <html> element and save preference.
 const applyTheme = (theme) => {
   document.documentElement.setAttribute('data-theme', theme);

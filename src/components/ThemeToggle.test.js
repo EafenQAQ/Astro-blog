@@ -37,6 +37,7 @@ describe('ThemeToggle', () => {
     
     const wrapper = mount(ThemeToggle)
     
+    
     // 等待组件挂载后的异步操作完成
     await wrapper.vm.$nextTick()
     
@@ -55,3 +56,4 @@ describe('ThemeToggle', () => {
     expect(documentElementMock.setAttribute).toHaveBeenCalledWith('data-theme', 'synthwave')
   })
 })
+  
